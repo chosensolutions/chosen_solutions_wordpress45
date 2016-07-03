@@ -1,0 +1,5 @@
+.magic-action-box.mab-type-cf7{}
+
+.magic-action-box.mab-type-cf7 span.wpcf7-not-valid-tip{ color: #333; text-shadow: none; }
+
+.magic-action-box.mab-type-cf7 input[type="text"], .magic-action-box.mab-type-cf7 input[type="email"], .magic-action-box.mab-type-cf7 input[type="password"], .magic-action-box.mab-type-cf7 textarea{ width: 98%; }

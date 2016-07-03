@@ -1,0 +1,23 @@
+/** Gravity Forms **/
+.magic-action-box .gform_wrapper .gform_body li{ 
+	margin-left: 0; 
+	margin-right: 0;
+}
+
+.magic-action-box .gform_wrapper input[type=text], .magic-action-box .gform_wrapper input[type=url], .magic-action-box .gform_wrapper input[type=email], .magic-action-box .gform_wrapper input[type=tel], .magic-action-box .gform_wrapper input[type=number], .magic-action-box .gform_wrapper input[type=password]{
+	padding: 4px 6px;
+}
+
+.magic-action-box .gform_wrapper .ginput_complex .ginput_full input{ width: 97% !important; }
+
+.magic-action-box .gform_wrapper .ginput_complex .ginput_right input, .magic-action-box .gform_wrapper .ginput_complex .ginput_right select{ width: 94% !important; }
+
+.magic-action-box .gform_wrapper .field_name_first input, .magic-action-box .gform_wrapper .ginput_complex .ginput_left input, .magic-action-box .gform_wrapper .ginput_complex .ginput_left select{ width: 94% !important;}
+
+.magic-action-box .gform_wrapper .ginput_complex .ginput_right select, .magic-action-box .gform_wrapper .ginput_complex .ginput_left select{ width: 99% !important;}
+
+.magic-action-box .gform_wrapper .gform_fields select.medium{ width: 49%; }
+
+.magic-action-box .gform_wrapper select, .magic-action-box .gform_wrapper.gf_browser_chrome .ginput_complex select, .magic-action-box .gform_wrapper .ginput_complex select, .magic-action-box .gform_wrapper .ginput_complex .ginput_right select{ padding: 3px 0; }
+
+.magic-action-box .gform_wrapper.gf_browser_chrome .ginput_complex select, .magic-action-box .gform_wrapper.gf_browser_chrome .ginput_complex .ginput_right select{ padding: 3px 0;}

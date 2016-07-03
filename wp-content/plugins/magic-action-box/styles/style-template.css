@@ -1,0 +1,139 @@
+.mab-STYLENAME.magic-action-box{
+	font-size: 14px !important;
+	line-height: 1.3 !important;
+	margin: 20px 0;
+}
+
+.mab-STYLENAME .mab-wrap{
+	padding: 15px;
+}
+
+.mab-STYLENAME .mab-aside{
+	position: relative;
+	z-index: 8;
+}
+
+.mab-STYLENAME .mab-aside-right .mab-aside{
+	float: right;
+	margin-left: 15px;
+}
+
+.mab-STYLENAME .mab-aside-left .mab-aside{
+	float: left;
+	margin-right: 15px;
+}
+
+.mab-STYLENAME .mab-aside-top .mab-aside{
+	display: block;
+	margin-bottom: 10px;
+	text-align: center;
+	width: 100%;
+}
+
+
+/* Content */
+.mab-STYLENAME .mab-content{
+	position: relative;
+	z-index: 10;
+}
+
+.mab-STYLENAME.magic-action-box .mab-heading{
+	clear: none;
+	font-size: 160% !important;
+	font-weight: bold !important;
+	letter-spacing: 0 !important;
+	line-height: 1.4 !important;
+	margin: 0 0 7px !important;
+	text-transform: none !important;
+}
+
+.mab-STYLENAME.magic-action-box .mab-subheading{
+	clear: none;
+	font-size: 120% !important;
+	font-weight: bold !important;
+	line-height: 1.4 !important;
+	margin: 0 0 10px !important;
+}
+
+.mab-STYLENAME.magic-action-box .mab-main-copy{
+}
+
+.mab-STYLENAME.magic-action-box .mab-secondary-copy{
+
+}
+
+.mab-STYLENAME .mab-main-action-wrap{}
+
+/* Form */
+.mab-STYLENAME.magic-action-box form{
+	margin: 10px 0;
+	overflow: hidden;
+}
+
+.mab-STYLENAME.magic-action-box form .mab-field{
+	display: inline-block;
+	margin: 0 10px 10px 0 !important;
+	width: 46%;
+}
+
+.mab-STYLENAME.magic-action-box .mab-elements-pos-inline form .mab-field{
+}
+
+.mab-STYLENAME.magic-action-box .mab-elements-pos-stacked form .mab-field{
+	display: block;
+	width: 95%;
+}
+
+.mab-STYLENAME.magic-action-box form .mab-field label{
+	display: block;
+	font-size: 90%;
+	margin-bottom: 2px;
+}
+
+.mab-STYLENAME.magic-action-box .mab-elements-pos-inline form .mab-field label{
+}
+
+.mab-STYLENAME.magic-action-box .mab-elements-pos-stacked form .mab-field label{
+}
+
+.mab-STYLENAME.magic-action-box form .mab-field input, .magic-action-box form .mab-field textarea{
+	border: 1px solid #ccc !important;
+	border-radius: 3px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+	color: #999 !important;
+	font-size: 100% !important;
+	margin: 0 !important;
+	padding: 3px 10px !important;
+	width: 90% !important;
+}
+
+.mab-STYLENAME.magic-action-box .mab-elements-pos-inline form .mab-field input, .magic-action-box .mab-elements-pos-inline form .mab-field textarea{
+}
+
+.mab-STYLENAME.magic-action-box .mab-elements-pos-stacked form .mab-field input, .magic-action-box .mab-elements-pos-stacked form .mab-field textarea{
+}
+
+.mab-STYLENAME.magic-action-box form .mab-field input:focus, .magic-action-box form .mab-field textarea:focus{
+}
+
+.mab-STYLENAME.magic-action-box form input[type="submit"], .mab-STYLENAME.magic-action-box form button{
+	background: #ffffff;
+	background: -moz-linear-gradient(top, #ffffff 0%, #ededed 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#ededed));
+	background: -webkit-linear-gradient(top, #ffffff 0%,#ededed 100%);
+	background: -o-linear-gradient(top, #ffffff 0%,#ededed 100%);
+	background: -ms-linear-gradient(top, #ffffff 0%,#ededed 100%);
+	background: linear-gradient(top, #ffffff 0%,#ededed 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 );
+	border: 1px solid #ccc !important;
+	border-radius: 15px;
+	display: inline-block;
+	cursor: pointer;
+	font-size: 100% !important;
+	padding: 3px 13px !important;
+	text-transform: none !important;
+}
+
+.mab-STYLENAME.magic-action-box form input[type="submit"]:hover, .magic-action-box form input[type="submit"]:focus{
+	border-color: #a5a5a5 !important;
+}

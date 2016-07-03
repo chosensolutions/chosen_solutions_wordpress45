@@ -1,0 +1,1 @@
+jQuery(document).ready(function(){jQuery('.magic-action-box p:empty').remove();});
