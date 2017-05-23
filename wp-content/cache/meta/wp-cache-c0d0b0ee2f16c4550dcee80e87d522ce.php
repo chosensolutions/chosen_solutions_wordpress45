@@ -1,1 +1,0 @@
-<?php die(); ?>{"headers":{"Vary":"Vary: Cookie","Content-Type":"Content-Type: text\/html; charset=UTF-8","Last-Modified":"Last-Modified: Sun, 03 Jul 2016 14:32:41 GMT"},"uri":"www.chosensolutions.ca\/","blog_id":1,"post":4,"key":"www.chosensolutions.ca80\/1bd9064a645fd5beb95844d12c141e0d"}
