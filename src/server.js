@@ -67,7 +67,7 @@ passport.use(new LocalStrategy(
 
 
 // Define Routes
-app.use('/api/auth', require('./routes/auth'));
+// app.use('/api/auth', require('./routes/auth.route'));
 
 
 app.use('/api/test', (req, res) => {
@@ -90,5 +90,4 @@ if (process.env.NODE_ENV === 'production') {
 
 
 module.exports = http.createServer(app)
-
 

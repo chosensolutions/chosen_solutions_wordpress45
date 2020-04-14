@@ -1,5 +1,5 @@
 const fetch = require('node-fetch')
-const api = require('../server')
+const api = require('../src/server')
 
 const apiPort = 7000
 

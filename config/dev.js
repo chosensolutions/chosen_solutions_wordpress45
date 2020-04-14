@@ -1,5 +1,5 @@
 module.exports = {
-  rootDir: "../tests",
+  rootDir: "./tests",
   testPathIgnorePatterns: [
     "<rootDir>/mock-servers/"
   ],
