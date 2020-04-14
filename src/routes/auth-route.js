@@ -64,3 +64,5 @@ router.get('/api/signout/', function (req, res, next) {
 router.get('/api/users/auth', function (req, res, next) {
     res.json(req.session);
 });
+
+module.exports = router
