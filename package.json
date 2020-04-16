@@ -13,8 +13,10 @@
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "jest": "^25.3.0",
+    "lowdb": "^1.0.0",
     "multer": "^1.4.2",
     "nedb": "^1.8.0",
+    "nedb-async-await": "^0.1.2",
     "node-fetch": "^2.6.0",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
@@ -26,6 +28,6 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src",
-    "test": "jest --config=config/jest.config.js"
+    "test": "jest --config=config/jest.config.js --runInBand"
   }
 }

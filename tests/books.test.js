@@ -1,26 +1,41 @@
-const fetch = require('node-fetch')
-const api = require('../src/server')
+const fetch = require('node-fetch');
+const api = require('../src/server');
 
-const apiPort = Math.round(Math.random() * 65535)
+const apiPort = Math.round(Math.random() * 65535);
+const baseURL = `http://localhost:${apiPort}/api/v1`;
 
 beforeAll(async () => {
-  await api.listen(apiPort)
+  await api.listen(apiPort);
 })
 
 describe('test suite', () => {
-  xit('test 1', async () => {
-    let response = await(await fetch(`http://localhost:${apiPort}/api/test`)).json();
+  it('POST /auth/register', async () => {
+    let response = await(await fetch(`${baseURL}/auth/register`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ 
+        "email":"yichenzhu1337@gmail.com3",
+        "password":"yichen"
+      })
+    })).json();
 
-    expect(response).toEqual({ 
-    	message: 'test'
+    expect(response).toEqual({
+      message: 'The email: yichenzhu1337@gmail.com3 has registered.'
     })
   })
 
-  xit('test 2', async () => {
-    let response = await(await fetch(`http://localhost:${apiPort}/api/test`)).json();
+  it('POST /auth/register 2', async () => {
+    let response = await(await fetch(`${baseURL}/auth/register`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ 
+        "email":"yichenzhu1337@gmail.com4",
+        "password":"yichen"
+      })
+    })).json();
 
-    expect(response).toEqual({ 
-      message: 'test'
+    expect(response).toEqual({
+      message: 'The email: yichenzhu1337@gmail.com4 has registered.'
     })
   })
 })

@@ -1,38 +1,73 @@
 const express = require('express');
 const router = express.Router();
+var path = require('path');
 
-var Datastore = require('nedb');
-var users = new Datastore({filename: '../../db/users.db', autoload: true, timestampData: true});
+const Datastore = require('nedb');
+//  + ' test ' + Math.round((new Date()).getTime() / 1000)
+let config = { filename: './storage/db/users.nedb', nodeWebkitAppName: 'nwtest', autoload: true, timestampData: true };
+//config = {};
+// const db = {
+//     users: new Datastore(config)
+// }
+
+const low = require('lowdb')
+const FileSync = require('lowdb/adapters/FileSync')
+
+const adapter = new FileSync('./storage/db/users.json')
+const db = low(adapter)
+
+// Set some defaults (required if your JSON file is empty)
+db.defaults({ users: [] })
+  .write()
 
 router.post('/register', async (req, res, next) => {
     let email = req.body.email;
     let password = req.body.password;
 
-    users.update({_id: email}, {_id: email, password: password}, {upsert: true}, function (err) {
-        if (err) return res.status(500).end({ message: err });
+    try {
+        db.get('users')
+        .push({ 
+            id: Date.now().toString(),
+            email,
+            password
+        })
+        .write()
+    }
+    catch (err) {
+        console.log(err)
+    }
 
-        req.session.email = email;
+    req.session.email = email;
 
-        return res.json({
-            message: "The email: " + email + " has registered."
-        });
+    return res.json({
+        message: "The email: " + email + " has registered."
     });
 });
 
-router.post('/login', function (req, res, next) {
+router.post('/login', (req, res, next) => {
     let email = req.body.email;
     req.session.email = email;
-    
+
+    // db.users.findOne({_id: email}, function (err, user) {
+    //     if (err) return res.status(500).end(err);
+
+    //     console.log(user._id)
+    //     // req.session.email = email;
+    //     return res.json({
+    //         "message": "user "  + " signed in"
+    //     });
+    // });
+
     res.status(200).json({
-        message: `user: ${email} has logged in`
+        message: `can't find user with that id`
     })
 });
 
 router.get('/logout', function (req, res, next) {
     let email = req.session.email;
-    
+
     req.session.destroy();
-    
+
     res.json({
         message: `user ${email} has successfully logged out`
     });
