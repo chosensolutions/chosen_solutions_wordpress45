@@ -1,5 +1,5 @@
-function authController() {
+function AuthController() {
 
 }
 
-module.exports = authController;
+module.exports = AuthController;

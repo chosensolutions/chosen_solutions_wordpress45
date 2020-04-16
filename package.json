@@ -13,12 +13,7 @@
     "express-session": "^1.17.0",
     "jest": "^25.3.0",
     "lowdb": "^1.0.0",
-    "multer": "^1.4.2",
-    "nedb": "^1.8.0",
-    "node-fetch": "^2.6.0",
-    "passport": "^0.4.1",
-    "passport-jwt": "^4.0.0",
-    "passport-local": "^1.0.0"
+    "node-fetch": "^2.6.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
@@ -26,6 +21,7 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src",
-    "test": "jest --config=config/jest.config.js --runInBand"
+    "test": "jest --config=config/jest.config.js --runInBand",
+    "test:watch": "jest --config=config/jest.config.js --watch"
   }
 }

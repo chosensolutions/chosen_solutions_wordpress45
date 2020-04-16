@@ -2,17 +2,21 @@ const getAllBooks = () => {
   return;
 }
 
-const loginUser = () => {
+const createABook = () => {
   return;
 }
 
-const logoutUser = () => {
+const updateABook = () => {
   return;
 }
 
-const getCurrentUser = () => {
+const deleteABook = () => {
   return;
 }
 
 module.exports = {
+  getAllBooks,
+  createABook,
+  updateABook,
+  deleteABook
 }

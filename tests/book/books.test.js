@@ -1,5 +1,5 @@
 const fetch = require('node-fetch');
-const api = require('../src/server');
+const api = require('../../src/server');
 
 const apiPort = Math.round(Math.random() * 65535);
 const baseURL = `http://localhost:${apiPort}/api/v1`;
@@ -113,4 +113,4 @@ describe('Books API', () => {
 
 afterAll(async () => {
   await api.close();
-})
+});
