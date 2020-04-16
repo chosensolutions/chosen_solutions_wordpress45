@@ -33,10 +33,10 @@ describe('test suite', () => {
 
     expect(response).toEqual({
       message: 'The email: yichenzhu1337@gmail.com1 has registered.'
-    })
+    });
   })
 
-  it('POST /auth/register 2', async () => {
+  xit('POST /auth/login', async () => {
     let response = await(await fetch(`${baseURL}/auth/register`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -48,9 +48,41 @@ describe('test suite', () => {
 
     expect(response).toEqual({
       message: 'The email: yichenzhu1337@gmail.com2 has registered.'
-    })
-  })
-})
+    });
+  });
+
+  xit('GET /auth/logout', async () => {
+    let response = await(await fetch(`${baseURL}/auth/register`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ 
+        "email":"yichenzhu1337@gmail.com2",
+        "password":"yichen"
+      })
+    })).json();
+
+    expect(response).toEqual({
+      message: 'The email: yichenzhu1337@gmail.com2 has registered.'
+    });
+  });
+
+  // Gets the currently authenticated user
+  xit('GET /auth/user', async () => {
+    let response = await(await fetch(`${baseURL}/auth/register`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ 
+        "email":"yichenzhu1337@gmail.com2",
+        "password":"yichen"
+      })
+    })).json();
+
+    expect(response).toEqual({
+      message: 'The email: yichenzhu1337@gmail.com2 has registered.'
+    });
+  });
+
+});
 
 afterAll(async () => {
   await api.close();
