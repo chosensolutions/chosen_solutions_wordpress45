@@ -4,8 +4,10 @@ module.exports = {
     '<rootDir>/mock-servers/'
   ],
   testMatch: [
-    '<rootDir>/auth.test.js',
-    '<rootDir>/books.test.js'
+    '<rootDir>/auth/register.test.js',
+    '<rootDir>/auth/login.test.js',
+    
+    //'<rootDir>/book/books.test.js'
   ],
   testTimeout: 3000
 }

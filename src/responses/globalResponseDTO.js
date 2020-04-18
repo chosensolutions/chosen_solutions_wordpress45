@@ -5,7 +5,7 @@
  * @param {*} message String
  * @param {*} data Object
  */
-function responseJSON(status, code, message, data) {
+function globalResponseDTO(status, code, message, data) {
   return {
     status,
     code,
@@ -13,3 +13,5 @@ function responseJSON(status, code, message, data) {
     data
   }
 }
+
+module.exports = globalResponseDTO;

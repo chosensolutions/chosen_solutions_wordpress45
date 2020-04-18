@@ -1,15 +1,7 @@
 const express = require('express');
 const router = express.Router();
 var path = require('path');
-
-const Datastore = require('nedb');
-//  + ' test ' + Math.round((new Date()).getTime() / 1000)
-let config = { filename: './storage/db/users.nedb', nodeWebkitAppName: 'nwtest', autoload: true, timestampData: true };
-//config = {};
-// const db = {
-//     users: new Datastore(config)
-// }
-
+const globalResponseDTO = require('../responses/globalResponseDTO');
 const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
 
@@ -18,20 +10,28 @@ const db = low(adapter)
 
 // Set some defaults (required if your JSON file is empty)
 db.defaults({ users: [] })
-  .write()
+    .write()
 
 router.post('/register', async (req, res, next) => {
-    let email = req.body.email;
-    let password = req.body.password;
+    // let registerUserDTO = registerUserDTO(req.body);
+
+    // let { email, password } = registerUserDTO;
+
+    // let validator.validateInput({ email, password });
+
+    let user = {
+        id: Date.now().toString(),
+        email,
+        password
+    };
+    // let userResponse = userService.registerUser(user);
+
+    // event.emit('userHasRegistered')
 
     try {
         db.get('users')
-        .push({ 
-            id: Date.now().toString(),
-            email,
-            password
-        })
-        .write()
+            .push(user)
+            .write()
     }
     catch (err) {
         console.log(err)
@@ -39,9 +39,12 @@ router.post('/register', async (req, res, next) => {
 
     req.session.email = email;
 
-    return res.json({
-        message: "The email: " + email + " has registered."
-    });
+    return res.json(globalResponseDTO(
+        status = "success",
+        code = 200,
+        message = `The email: ${email} has registered.`,
+        data = user
+    ));
 });
 
 router.post('/login', (req, res, next) => {

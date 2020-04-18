@@ -27,30 +27,20 @@ afterEach(() => {
  */
 describe('test suite', () => {
 
-  xit('GET /auth/logout', async () => {
-    let response = await(await fetch(`${baseURL}/auth/register`, {
+  xit('POST /auth/login', async () => {
+    let user = { 
+      "email":"yichen@yichen.com",
+      "password":"password"
+    };
+
+    let response = await(await fetch(`${baseURL}/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ 
-        "email":"yichenzhu1337@gmail.com2",
-        "password":"yichen"
-      })
+      body: JSON.stringify(user)
     })).json();
 
     expect(response).toEqual({
-      message: 'The email: yichenzhu1337@gmail.com2 has registered.'
-    });
-  });
-
-  // Gets the currently authenticated user
-  xit('GET /auth/user', async () => {
-    let response = await(await fetch(`${baseURL}/auth/user`, {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' }
-    })).json();
-
-    expect(response).toEqual({
-      message: 'The currently authenticated user is: yichenzhu1337@gmail.com2.'
+      message: `The email: ${user.email} has successfully logged in.`
     });
   });
 

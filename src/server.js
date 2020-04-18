@@ -9,17 +9,18 @@ const session = require("express-session");
 app.use(bodyParser.json());
 app.use(
   session({
-    secret: 'secret',
+    secret: 'my-session-secret',
     resave: false,
     saveUninitialized: true
   })
 );
 
-app.use('/api/v1/auth', require('./routes/auth.route'));
-app.use('/api/v1/test', require('./routes/test.route'));
-
-app.get('*', (req, res) => {
-  res.status(200).json({
+const getRouter = require('./routes');
+const router = getRouter()
+app.use('/api/v1', router)
+// 404?
+router.get('*', (req, res) => {
+  res.status(404).json({
     message: '404 bro'
   })
 });
