@@ -33,7 +33,7 @@ describe('test suite', () => {
       "password": "password"
     };
 
-    let response = await (await fetch(`${baseURL}/auth/register`, {
+    let response = await(await fetch(`${baseURL}/auth/register`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(user)

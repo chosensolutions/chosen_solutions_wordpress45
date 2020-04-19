@@ -24,7 +24,7 @@ const updateBookById = (bookId, book) => {
 }
 
 // Delete a book
-const deleteBookById = (bookId) => {
+const updateBookById = (bookId) => {
   return db.get(table).find({ id: bookId }).assign({}).write();
 }
 

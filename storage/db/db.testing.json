@@ -1,0 +1,81 @@
+{
+  "users": [],
+  "books": [
+    {
+      "id": 1,
+      "title": "lowdb is awesome"
+    },
+    {
+      "id": 1,
+      "title": "lowdb is awesome"
+    },
+    {
+      "id": 2,
+      "title": "lowdb is awesome"
+    },
+    {
+      "id": 2,
+      "title": "lowdb is awesome"
+    },
+    {
+      "id": 2,
+      "title": "lowdb is awesome"
+    },
+    {
+      "id": 2,
+      "title": "lowdb is awesome"
+    },
+    {
+      "id": 2,
+      "title": "lowdb is awesome"
+    },
+    {
+      "id": 2,
+      "title": "lowdb is awesome"
+    },
+    {
+      "id": 2,
+      "title": "lowdb is awesome"
+    },
+    {
+      "id": 2,
+      "title": "lowdb is awesome"
+    },
+    {
+      "id": 2,
+      "title": "lowdb is awesome"
+    },
+    {
+      "id": 1,
+      "title": 1,
+      "description": 1,
+      "price": 1,
+      "author": 1,
+      "datePublished": 1
+    },
+    {
+      "id": 1,
+      "title": 1,
+      "description": 1,
+      "price": 1,
+      "author": 1,
+      "datePublished": 1
+    },
+    {
+      "id": 1,
+      "title": 1,
+      "description": 1,
+      "price": 1,
+      "author": 1,
+      "datePublished": 1
+    },
+    {
+      "id": 1,
+      "title": 1,
+      "description": 1,
+      "price": 1,
+      "author": 1,
+      "datePublished": 1
+    }
+  ]
+}

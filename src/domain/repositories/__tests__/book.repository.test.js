@@ -1,9 +1,20 @@
 const bookRepository = require('../book.repository');
 
-describe('Test Suite: Repositories', () => {
+describe('Test Suite: Book Repository', () => {
 
-  it('Repository - Book', () => {
-    // 1. Arrange
+  it('Book Repository - getAllBooks', () => {
+    let books = bookRepository.getAllBooks(newBook);
+
+    console.log(books);
+  });
+
+  it('Book Repository - getBookById', () => {
+    let book = bookRepository.getBookById(1);
+
+    console.log(book);
+  });
+
+  it('Book Repository - createBook', () => {
     let newBook = {
       id: 1,
       title: 1,
@@ -13,13 +24,28 @@ describe('Test Suite: Repositories', () => {
       datePublished: 1
     }
 
-    // 2. Act
     let book = bookRepository.createBook(newBook);
 
     console.log(book);
-
-    // 3. Assert
-    // expect(registerUserRequest).toEqual({ email: undefined, password: undefined });
   });
 
+  it('Book Repository - updateBookById', () => {
+    let newBook = {
+      title: 2,
+      description: 2,
+      price: 2,
+      author: 2,
+      datePublished: 2
+    }
+
+    let book = bookRepository.updateBookById(1, newBook);
+
+    console.log(book);
+  });
+
+  it('Book Repository - deleteBookById', () => {
+    let book = bookRepository.deleteBookById(1);
+
+    console.log(book);
+  });
 });
