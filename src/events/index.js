@@ -1,5 +1,7 @@
-const EventEmiter = require('events').EventEmitter;
+const events = require('events');
+
+const eventEmitter = new events.EventEmitter();
 
 const userHasRegistered = require('./userHasRegistered');
 
-EventEmitter.on('userHasRegistered', userHasRegistered);
+eventEmitter.on('userHasRegistered', userHasRegistered);

@@ -1,3 +1,4 @@
 module.exports = {
-  db_file: 'db.dev.json'
+  db_file: 'db.dev.json',
+  baseUrl: ''
 }
