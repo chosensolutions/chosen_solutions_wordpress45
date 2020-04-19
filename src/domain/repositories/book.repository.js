@@ -2,8 +2,8 @@ const db = require('../../utils/db');
 const table = 'books';
 
 // Retrieve - all book
-const getAllBooks = (book) => {
-  return db.get(table).find().value();
+const getAllBooks = () => {
+  return db.get(table).value();
 }
 
 // Retrieve - one book
@@ -13,11 +13,9 @@ const getBookById = (id) => {
 
 // Create a book
 const createBook = (newBook) => {
-// make sure newBook has the same properties as bookModel
-
-  return db.get(table).push(
-    book
-  ).write();
+  let books = db.get(table).push(newBook).write();
+  let book = books[books.length - 1];
+  return book;
 }
 
 // Update a book

@@ -7,6 +7,15 @@ const userService = require('../domain/services/auth.service');
 var events = require('events');
 var eventEmitter = new events.EventEmitter();
 
+/**
+ * Inserts the user into the database and fires off an email notification to that user's email if successful
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ * 
+ * @returns globalResponseDTO
+ */
 const registerUser = async (req, res, next) => {
   // 2. request
   const registerUserRequest = registerUserRequestDTO(req.body);
@@ -21,6 +30,7 @@ const registerUser = async (req, res, next) => {
   eventEmitter.emit('userHasRegistered');
 
   // 7. response
+  // add a registeredUserResponseDTO here...
   return res.json(globalResponseDTO(
     status = "success",
     code = 200,
@@ -29,6 +39,68 @@ const registerUser = async (req, res, next) => {
   ));
 }
 
+/**
+ * Logs the user in and set a session for it
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ */
+const logUserIn = (req, res, next) => {
+  let email = req.session.email;
+
+  // if the user's email and password match in our database then set the current session to that user
+  req.session.user = {};
+
+  return res.json(globalResponseDTO(
+    status = "success",
+    code = 200,
+    message = `The email: ${email} has successfully logged in.`,
+    data = user
+  ));
+}
+
+/**
+ * Logs the currently authenticated user out of the current session
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ */
+const logUserOut = (req, res, next) => {
+  let email = req.session.email;
+
+  req.session.destroy();
+
+  return res.json(globalResponseDTO(
+    status = "success",
+    code = 200,
+    message = `user ${email} has successfully logged out.`,
+    data = user
+  ));
+}
+
+/**
+ * Gets the currently authenticated user in the current session.
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ */
+const getAuthUser = (req, res, next) => {
+  let user = req.session.user;
+
+  return res.json(globalResponseDTO(
+    status = "success",
+    code = 200,
+    message = `The currently authenticated user's session for user: ${user.email}.`,
+    data = user
+  ));
+}
+
 module.exports = {
-  registerUser
+  registerUser,
+  logUserIn,
+  logUserOut,
+  getAuthUser
 };

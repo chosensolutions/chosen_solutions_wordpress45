@@ -9,7 +9,7 @@ module.exports = {
     
     //'<rootDir>/book/books.test.js'
 
-   '<rootDir>/src/**/__tests__/**.js', 
+   '<rootDir>/src/**/__tests__/**.test.js', 
     //'**/?(*.)(spec|test).js?(x)',
   ],
   testTimeout: 3000
