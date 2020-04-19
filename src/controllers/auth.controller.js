@@ -2,10 +2,9 @@ const globalResponseDTO = require('../responses/globalResponseDTO');
 const registerUserRequestDTO = require('../requests/registerUserRequestDTO');
 const registerUserValidator = require('../validators/registerUserValidator');
 const userService = require('../domain/services/auth.service');
+const userResponseDTO = require('../responses/userResponseDTO');
 
-// Import events module and Create an eventEmitter object
-var events = require('events');
-var eventEmitter = new events.EventEmitter();
+var EventEmitter = require('events').EventEmitter();
 
 /**
  * Inserts the user into the database and fires off an email notification to that user's email if successful
@@ -27,27 +26,27 @@ const registerUser = async (req, res, next) => {
   const user = userService.registerUser(registerUserRequest);
 
   // 6. event
-  eventEmitter.emit('userHasRegistered');
+  EventEmitter.emit('userHasRegistered', user);
 
   // 7. response
-  // add a registeredUserResponseDTO here...
+  const responseDTO = userResponseDTO(user);
   return res.json(globalResponseDTO(
     status = "success",
     code = 200,
-    message = `The email: ${email} has successfully registered.`,
-    data = user
+    message = `The email: ${responseDTO.email} has successfully registered.`,
+    data = responseDTO
   ));
 }
 
 /**
- * Logs the user in and set a session for it
+ * Logs the user in and set a session for it.
  * 
  * @param {*} req 
  * @param {*} res 
  * @param {*} next 
  */
 const logUserIn = (req, res, next) => {
-  let email = req.session.email;
+  let { email } = req.session.user;
 
   // if the user's email and password match in our database then set the current session to that user
   req.session.user = {};
@@ -61,7 +60,7 @@ const logUserIn = (req, res, next) => {
 }
 
 /**
- * Logs the currently authenticated user out of the current session
+ * Logs the currently authenticated user out of the current session.
  * 
  * @param {*} req 
  * @param {*} res 

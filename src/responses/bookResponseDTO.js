@@ -6,7 +6,7 @@
  * @param {*} message String
  * @param {*} data Object
  */
-function globalResponseDTO(status, code, message, data) {
+function bookResponseDTO(status, code, message, data) {
   return {
     status,
     code,
@@ -15,4 +15,4 @@ function globalResponseDTO(status, code, message, data) {
   }
 }
 
-module.exports = globalResponseDTO;
+module.exports = bookResponseDTO;

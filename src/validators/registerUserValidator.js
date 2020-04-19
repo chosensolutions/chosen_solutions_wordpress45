@@ -1,26 +1,35 @@
 const Validator = require('validatorjs');
 
-// email: is required
-// password: is required
-// password: is rsquired and (password and password_confirm must match)
-const registerUserValidation = (input) => {
-  const data = {
-    name: 'John',
-    email: 'johndoe@gmail.com',
-    age: 28
-  };
+/**
+ * @param {*} data {
+ *  email: is required
+ *  password: is required
+ * }
+ * 
+ * @returns Validator
+ */
+const registerUserValidation = (data) => {
+  // const data = {
+  //   email: 'johndoe@gmail.com',
+  //   password: 'superduperpassword'
+  // };
    
   const rules = {
-    name: 'required',
     email: 'required|email',
-    age: 'min:18',
-    password: 'required|min:6'
+    password: 'required|min:6',
+    password_confirm: 'required|min:6'
   };
    
   let validation = new Validator(data, rules);
    
-  validation.passes(); // true
-  validation.fails(); // false
+  // validation.passes(); // true
+  // validation.fails(); // false
+
+  if (validation.fails()) {
+    // throw new Error('message', someErrorObjectsHere?)
+  }
+
+  return validation;
 }
 
 module.exports = registerUserValidation;

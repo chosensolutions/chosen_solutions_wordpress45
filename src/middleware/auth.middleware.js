@@ -1,5 +1,15 @@
-var isAuthenticated = function (req, res, next) {
-    if (!req.username) return res.status(401).end("access denied");
+const globalResponseDTO = require('../responses/globalResponseDTO');
+
+const isAuthenticated = (req, res, next) => {
+    if (!req.user) {
+        return res.status(401).json(globalResponseDTO(
+            status = "failed",
+            code = 401,
+            message = "Your must be logged in to access this API endpoint.",
+            data = {}
+        ));
+    }
+
     next();
 };
 

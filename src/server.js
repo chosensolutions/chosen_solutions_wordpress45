@@ -4,6 +4,8 @@ const bodyParser = require("body-parser");
 const app = express();
 const session = require("express-session");
 
+const globalResponseDTO = require('./responses/globalResponseDTO');
+
 app.use(bodyParser.json());
 app.use(
   session({
@@ -17,11 +19,9 @@ const getRouter = require('./routes');
 const router = getRouter();
 app.use('/api/v1', router);
 
-// 404 Not Found
-router.get('*', (req, res) => {
-  res.status(404).json({
-    message: '404 bro'
-  });
+// 404 API Endpoint Not Found
+router.get('*', (req, res, next) => {
+  return;
 });
 
 module.exports = http.createServer(app);
