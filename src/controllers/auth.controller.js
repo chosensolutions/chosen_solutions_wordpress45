@@ -7,7 +7,7 @@ const userResponseDTO = require('../responses/userResponseDTO');
 var EventEmitter = require('events').EventEmitter();
 
 /**
- * Inserts the user into the database and fires off an email notification to that user's email if successful
+ * Inserts the user into the database and fires off an email notification to that user's email if successful.
  * 
  * @param {*} req 
  * @param {*} res 

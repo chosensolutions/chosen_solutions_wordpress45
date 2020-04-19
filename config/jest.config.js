@@ -1,16 +1,9 @@
 module.exports = {
   rootDir: '../',
-  testPathIgnorePatterns: [
-    //'<rootDir>/mock-servers/'
-  ],
+  testPathIgnorePatterns: [],
   testMatch: [
-    //'<rootDir>/tests/auth/register.test.js',
-    //'<rootDir>/auth/login.test.js',
-    
-    //'<rootDir>/book/books.test.js'
-
-   '<rootDir>/src/**/__tests__/**.test.js', 
-    //'**/?(*.)(spec|test).js?(x)',
+    //'<rootDir>/tests/**.test.js'
+   '<rootDir>/src/**/__tests__/**.test.js',
   ],
   testTimeout: 3000
 }
