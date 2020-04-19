@@ -6,3 +6,13 @@ const Book = {
   author,
   datePublished
 }
+
+
+// const bookModel = {
+
+
+// }
+
+// const find
+
+module.exports = Book;

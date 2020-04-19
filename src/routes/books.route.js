@@ -2,8 +2,7 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport')
 
-router
-	.get('/', (req, res) => {
+router.get('/', async (req, res) => {
 	res.status(200).json({
 		message: 'test'
 	})

@@ -1,6 +1,5 @@
 const http = require('http')
 const express = require('express');
-const path = require('path');
 const bodyParser = require("body-parser");
 
 const app = express();
@@ -16,13 +15,14 @@ app.use(
 );
 
 const getRouter = require('./routes');
-const router = getRouter()
-app.use('/api/v1', router)
+const router = getRouter();
+app.use('/api/v1', router);
+
 // 404?
 router.get('*', (req, res) => {
   res.status(404).json({
     message: '404 bro'
-  })
+  });
 });
 
 module.exports = http.createServer(app);

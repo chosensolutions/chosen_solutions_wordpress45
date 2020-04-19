@@ -1,33 +1,39 @@
-let bookRepository = {}
+const db = require('../../utils/db');
+const table = 'books';
 
-const db = {}
-
-function getAllbooks() {
-  
+// Retrieve - all book
+const getAllBooks = (book) => {
+  return db.get(table).find().value();
 }
 
-function getBookById(id) {
-
+// Retrieve - one book
+const getBookById = (id) => {
+  return db.get(table).find({ id: id }).value();
 }
 
-function createABook(book) {
+// Create a book
+const createBook = (newBook) => {
+// make sure newBook has the same properties as bookModel
 
+  return db.get(table).push(
+    book
+  ).write();
 }
 
-function updateABookById(bookId) {
-
+// Update a book
+const updateBookById = (bookId, book) => {
+  return db.get(table).find({ id: bookId }).assign(book).write();
 }
 
-function deleteABookById(bookId) {
-
+// Delete a book
+const deleteBookById = (bookId) => {
+  return db.get(table).find({ id: bookId }).assign({}).write();
 }
 
-bookRepository = {
-  getAllbooks,
+module.exports = {
+  getAllBooks,
   getBookById,
-  createABook,
-  updateABookById,
-  deleteABookById
-}
-
-module.exports = bookRepository;
+  createBook,
+  updateBookById,
+  deleteBookById
+};
