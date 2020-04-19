@@ -1,14 +1,38 @@
-const db = {}
+const db = require('../../utils/db');
+const table = 'users';
 
-function createUser() {
-  
+/**
+ * 
+ * @param {*} id 
+ * 
+ * @returns user
+ */
+const createUser = (user) => {
+
 }
 
-function getUser(id) {
+/**
+ * 
+ * @param {*} user 
+ * 
+ * @returns boolean
+ */
+const checkIfUserExistsByEmailAndPassword = (user) => {
+
+}
+
+/**
+ * 
+ * @param {*} id 
+ * 
+ * @returns user
+ */
+const getUserById = (id) => {
 
 }
 
 module.exports = {
   createUser,
-  getUser
+  checkUserIfExistsByEmailAndPassword,
+  getUserById
 }

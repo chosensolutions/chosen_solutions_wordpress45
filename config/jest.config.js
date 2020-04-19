@@ -3,7 +3,9 @@ module.exports = {
   testPathIgnorePatterns: [],
   testMatch: [
     //'<rootDir>/tests/**.test.js'
-   '<rootDir>/src/**/__tests__/**.test.js',
+    '<rootDir>/src/domain/repositories/__tests__/**.test.js',
+
+    //'<rootDir>/src/**/__tests__/**.test.js',
   ],
   testTimeout: 3000
 }

@@ -1,9 +1,15 @@
 const bookRepository = require('../book.repository');
+const db = require('../../../utils/db');
+
+beforeAll(() => {
+  db.set('books', [])
+    .write()
+});
 
 describe('Test Suite: Book Repository', () => {
 
   it('Book Repository - getAllBooks', () => {
-    let books = bookRepository.getAllBooks(newBook);
+    let books = bookRepository.getAllBooks();
 
     console.log(books);
   });
@@ -16,7 +22,7 @@ describe('Test Suite: Book Repository', () => {
 
   it('Book Repository - createBook', () => {
     let newBook = {
-      id: 1,
+      id: 10000,
       title: 1,
       description: 1,
       price: 1,
@@ -38,7 +44,7 @@ describe('Test Suite: Book Repository', () => {
       datePublished: 2
     }
 
-    let book = bookRepository.updateBookById(1, newBook);
+    let book = bookRepository.updateBookById(10000, newBook);
 
     console.log(book);
   });
