@@ -24,4 +24,6 @@ router.get('*', (req, res, next) => {
   return;
 });
 
+require('./events');
+
 module.exports = http.createServer(app);

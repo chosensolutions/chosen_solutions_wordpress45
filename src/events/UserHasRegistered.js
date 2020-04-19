@@ -1,7 +1,7 @@
-const EventEmiter = require('events').EventEmitter;
-
-EventEmitter.on('userHasRegistered', function (user) {
+const userHasRegistered = (user) => {
 
   // send them a notification/email
 
-});
+}
+
+module.exports = userHasRegistered;
