@@ -4,6 +4,10 @@ const bodyParser = require("body-parser");
 const app = express();
 const session = require("express-session");
 
+const mongoose = require('mongoose');
+const mongoURI = 'mongodb://127.0.0.1/my_database';
+mongoose.connect(mongoURI);
+
 const globalResponseDTO = require('./responses/globalResponseDTO');
 
 app.use(bodyParser.json());

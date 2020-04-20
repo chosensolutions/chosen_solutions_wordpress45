@@ -1,15 +1,31 @@
-/*
-This is where you will have your models if you are using databases like mongoose or sequelize. We aren't using that those, we are using lowdb which doesn't support models, so we can just use this file for reference. 
-*/
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-// const Book = {
-//   id,
-//   userId,      
-//   title,
-//   description,
-//   price,
-//   author,
-//   datePublished
-// }
+const BookSchema = new mongoose.Schema({
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'user'
+  },
+  title: {
+    type: String,
+    required: true
+  },
+  description: {
+    type: String
+  },
+  price: {
+    type: Number
+  },
+  author: {
+    type: String
+  },
+  datePublished: {
+    type: String
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
+});
 
-// module.exports = Book;
+module.exports = mongoose.model('book', BookSchema);

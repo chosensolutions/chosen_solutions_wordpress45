@@ -1,32 +1,64 @@
-const userRepository = require('../user.repository');
-const db = require('../../../utils/db');
+var mongoose = require("mongoose");
 
-beforeAll(() => {
-  db.set('users', [])
-    .write()
+// we use a test database for testing
+var mongoDB = "mongodb://127.0.0.1/my_test_database";
+mongoose.connect(mongoDB, { useNewUrlParser: true });
+
+const userRepository = require('../user.repository');
+const UserModel = require('../../models/user.model');
+
+beforeAll(async () => {
+  await UserModel.remove({});
+});
+
+afterEach(async () => {
+  await UserModel.remove({});
 });
 
 describe('Test Suite: User Repository', () => {
   let testUser = {
-
+    name: 'Yichen Zhu',
+    email: 'yichen@yichen.com',
+    password: 'password123'
   };
 
-  it('User Repository - createUser', () => {
-    let user = userRepository.createUser(testUser);
-
-    console.log(user);
+  it('User Repository - createUser', async () => {
+    let user = await userRepository.createUser(testUser);
+    const expected = 'Yichen Zhu';
+    const actual = user.name;
+    expect(actual).toEqual(expected);
   });
 
-  it('user Repository - checkIfUserExistsByEmailAndPassword', () => {
-    let user = userRepository.checkUserIfExistsByEmailAndPassword(testUser);
-
-    console.log(user);
+  xit('user Repository - checkIfUserExistsByEmailAndPassword', async () => {
+    // 1. Arrange
+    // Insert user into db
+    let user = await userRepository.createUser(testUser);
+  
+    // 2. Act
+    const foundUser = await userRepository.checkIfUserExistsByEmailAndPassword(testUser)
+  
+    // 3. Assert
+    const expected = 'Yichen Zhu';
+    const actual = foundUser.name;
+    expect(actual).toEqual(expected);
   });
 
-  it('user Repository - getUserById', () => {
-    let user = userRepository.getUserById(testUser);
+  xit('user Repository - getUserById', () => {
+    //let user = userRepository.getUserById(testUser);
 
-    console.log(user);
+    //console.log(user);
+
+    // const user = new User({ name: "foo", birthday: "1987-01-02" });
+    // await user.save();
+
+    // const foundUser = await User.findOne({ id: asdasdasda });
+    // const expected = "foo";
+    // const actual = foundUser.name;
+    // expect(actual).toEqual(expected);
   });
 
+});
+
+afterAll(async () => {
+  await mongoose.connection.close();
 });

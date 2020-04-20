@@ -1,4 +1,5 @@
 const globalResponseDTO = require('../responses/globalResponseDTO');
+const createBookRequestDTO = require('../requests/createBookRequestDTO');
 
 /**
  * Description:
@@ -47,6 +48,8 @@ const getBookById = (req, res, next) => {
  */
 const createABook = (req, res, next) => {
   
+  const newBook = createBookRequestDTO(req.body);
+
   return res.json(globalResponseDTO(
     status = "success",
     code = 200,

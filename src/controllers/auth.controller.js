@@ -1,7 +1,7 @@
 const globalResponseDTO = require('../responses/globalResponseDTO');
 const registerUserRequestDTO = require('../requests/registerUserRequestDTO');
 const registerUserValidator = require('../validators/registerUserValidator');
-const userService = require('../domain/services/auth.service');
+const authService = require('../domain/services/auth.service');
 const userResponseDTO = require('../responses/userResponseDTO');
 
 var EventEmitter = require('events').EventEmitter();
@@ -23,7 +23,7 @@ const registerUser = async (req, res, next) => {
   const registerUserValidator = registerUserValidator(registerUserRequest);
 
   // 5. business logic
-  const user = userService.registerUser(registerUserRequest);
+  const user = authService.registerUser(registerUserRequest);
 
   // 6. event
   EventEmitter.emit('userHasRegistered', user);
@@ -67,14 +67,14 @@ const logUserIn = (req, res, next) => {
  * @param {*} next 
  */
 const logUserOut = (req, res, next) => {
-  let email = req.session.email;
+  let user = userResponseDTO(req.session.user);
 
   req.session.destroy();
 
   return res.json(globalResponseDTO(
     status = "success",
     code = 200,
-    message = `user ${email} has successfully logged out.`,
+    message = `user ${user.email} has successfully logged out.`,
     data = user
   ));
 }
@@ -87,8 +87,8 @@ const logUserOut = (req, res, next) => {
  * @param {*} next 
  */
 const getAuthUser = (req, res, next) => {
-  let user = req.session.user;
-
+  let user = userResponseDTO(req.session.user);
+  
   return res.json(globalResponseDTO(
     status = "success",
     code = 200,

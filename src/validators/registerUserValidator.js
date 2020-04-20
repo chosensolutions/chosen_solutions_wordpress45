@@ -2,34 +2,27 @@ const Validator = require('validatorjs');
 
 /**
  * @param {*} data {
- *  email: is required
- *  password: is required
+ *  - email
+ *  - password
+ *  - password_confirm:
  * }
  * 
  * @returns Validator
  */
-const registerUserValidation = (data) => {
-  // const data = {
-  //   email: 'johndoe@gmail.com',
-  //   password: 'superduperpassword'
-  // };
-   
+const registerUserValidator = (data) => {
   const rules = {
     email: 'required|email',
     password: 'required|min:6',
-    password_confirm: 'required|min:6'
+    password_confirmation: 'required|min:6|same:password'
   };
    
-  let validation = new Validator(data, rules);
-   
-  // validation.passes(); // true
-  // validation.fails(); // false
+  let validator = new Validator(data, rules);
 
-  if (validation.fails()) {
-    // throw new Error('message', someErrorObjectsHere?)
+  if (validator.fails()) {
+    throw new Error('There were errors with the validation');
   }
 
-  return validation;
+  return validator;
 }
 
-module.exports = registerUserValidation;
+module.exports = registerUserValidator;
