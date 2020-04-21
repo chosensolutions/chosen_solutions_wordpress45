@@ -1,4 +1,5 @@
 # api-node-starter-kit
+This is the starter kit for building any Node.js backend system. This starter kit is mainly for building RESTful web APIs.
 
 ## Requirements
 - Node Version >=12
@@ -9,6 +10,11 @@
 Make sure to setup the configuration properly
 ```
 ./config
+```
+
+## Starting MongoDB
+```
+$ npm run mongo:start
 ```
 
 ## Install Dependencies
