@@ -1,3 +1,8 @@
 module.exports = {
-  db_file: 'db.testing.json'
+  dbFile: 'db.dev.json',
+  baseUrl: '',
+  port: 5000,
+  mongoURI: '',
+  apiPrefix: '',
+  sessionSecret: ''
 }

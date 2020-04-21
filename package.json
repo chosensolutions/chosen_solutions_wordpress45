@@ -22,8 +22,8 @@
     "nodemon": "^2.0.2"
   },
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "nodemon src",
+    "start": "node ./src/index.js",
+    "dev": "nodemon ./src",
     "test": "jest --config=config/jest.config.js --runInBand",
     "test:watch": "NODE_ENV=testing jest --config=config/jest.config.js --watch",
     "mongo:start": "docker run --rm -d -p 27017:27017 mongo"

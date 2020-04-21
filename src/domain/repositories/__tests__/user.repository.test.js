@@ -1,8 +1,6 @@
-var mongoose = require("mongoose");
-
-// we use a test database for testing
-var mongoDB = "mongodb://127.0.0.1/my_test_database";
-mongoose.connect(mongoDB, { useNewUrlParser: true });
+const config = require('../../../../config');
+const mongoose = require("mongoose");
+mongoose.connect(config.mongoURI, { useNewUrlParser: true });
 
 const userRepository = require('../user.repository');
 const UserModel = require('../../models/user.model');

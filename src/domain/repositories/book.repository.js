@@ -1,31 +1,31 @@
-const db = require('../../utils/db');
-const table = 'books';
+const BookModel = require('../models/book.model');
 
 // Retrieve - all book
-const getAllBooks = () => {
-  return db.get(table).value();
+const getAllBooks = async () => {
+  return await BookModel.find({});
 }
 
 // Retrieve - one book
-const getBookById = (id) => {
-  return db.get(table).find({ id: id }).value();
+const getBookById = async (id) => {
+  return await BookModel.find({ id });
 }
 
 // Create a book
-const createBook = (newBook) => {
-  let books = db.get(table).push(newBook).write();
-  let book = books[books.length - 1];
+const createBook = async (newBook) => {
+  const newBook = new BookModel(newBook);
+  const book = await newBook.save();
   return book;
 }
 
 // Update a book
-const updateBookById = (bookId, book) => {
-  return db.get(table).find({ id: bookId }).assign(book).write();
+const updateBookById = async (id, book) => {
+  return await BookModel.find({ id }).save(book);
 }
 
 // Delete a book
-const deleteBookById = (bookId) => {
-  return db.get(table).find({ id: bookId }).assign({}).write();
+const deleteBookById = async (id) => {
+  const book = await BookModel.find({ id }).remove();
+  return book;
 }
 
 module.exports = {
