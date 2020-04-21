@@ -1,8 +1,8 @@
 module.exports = {
   dbFile: 'db.dev.json',
-  baseUrl: '',
+  baseUrl: 'http://localhost:',
   port: 5000,
-  mongoURI: '',
-  apiPrefix: '',
-  sessionSecret: ''
+  mongoURI: 'mongourl/dev_db',
+  apiPrefix: 'api/v1',
+  sessionSecret: 'my-secret-session-dev'
 }

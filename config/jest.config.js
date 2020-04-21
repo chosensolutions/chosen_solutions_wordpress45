@@ -2,13 +2,18 @@ module.exports = {
   rootDir: '../',
   testPathIgnorePatterns: [],
   testMatch: [
+    /***** HTTP *****/
     // Requests
-    
+    //'<rootDir>/src/resquests/__tests__/**.test.js',
+
     // Responses
+    //'<rootDir>/src/responses/__tests__/**.test.js',
 
     // Events
+    //'<rootDir>/src/events/__tests__/**.test.js',
 
     // Middleware
+    //'<rootDir>/src/middleware/__tests__/**.test.js',
 
     // Validators
     //'<rootDir>/src/validators/__tests__/**.test.js',
@@ -25,7 +30,14 @@ module.exports = {
     //'<rootDir>/src/domain/services/__tests__/user.service.test.js',
 
     /***** API Tests *****/
-    //'<rootDir>/tests/api/**.test.js'
+    // Auth
+    //'<rootDir>/tests/api/auth/**.test.js'
+    //'<rootDir>/tests/api/auth/auth.test.js'
+    //'<rootDir>/tests/api/auth/login.test.js'
+    //'<rootDir>/tests/api/auth/register.test.js'
+
+    // Book
+    //'<rootDir>/tests/api/book/**.test.js'
   ],
   testTimeout: 3000,
   testEnvironment: 'node'

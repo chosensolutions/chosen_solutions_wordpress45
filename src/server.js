@@ -8,12 +8,13 @@ const mongoose = require('mongoose');
 const mongoURI = 'mongodb://127.0.0.1/my_database';
 mongoose.connect(mongoURI);
 
+const config = require('../config');
 const globalResponseDTO = require('./responses/globalResponseDTO');
 
 app.use(bodyParser.json());
 app.use(
   session({
-    secret: 'my-session-secret',
+    secret: config.sessionSecret,
     resave: false,
     saveUninitialized: true
   })
@@ -44,6 +45,7 @@ app.use((err, req, res, next) => {
     ));
 });
 
+// Event listeners
 require('./events');
 
 module.exports = http.createServer(app);

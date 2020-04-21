@@ -1,12 +1,14 @@
-/**
- * 
- * @return {
- *  email,
- *  password
- * }
- */
+const fields = [
+  'first_name',
+  'last_name',
+  'email',
+  'password',
+  'password_confirmation',
+  'phone_number'
+];
+
 registerUserRequestDTO = (input) => {
-  if (typeof input != 'object') {
+  if (typeof input['email'] != 'string') {
     throw new Error('Yo gotta give us that json!');
   }
 

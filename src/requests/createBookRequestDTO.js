@@ -1,14 +1,9 @@
-/**
- * 
- * @return {
- *  title,
- *  description,
- * }
- */
+const fields = [
+  'title',
+  'description'
+];
 
-module.exports = (input) => {
-  //console.log(input['title'])
-  
+const createBookRequestDTO = (input) => {
   if (typeof input['title'] !== 'string') {
     throw new Error(' "title" must be a string');
   }
@@ -18,7 +13,9 @@ module.exports = (input) => {
   }
 
   return {
-    email: input['email'],
-    password: input['password']
+    email: input['title'],
+    password: input['description']
   }
 };
+
+module.exports = createBookRequestDTO;
