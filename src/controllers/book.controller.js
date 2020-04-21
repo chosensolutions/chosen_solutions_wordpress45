@@ -10,17 +10,14 @@ const bookResponseDTO = require('../responses/bookResponseDTO');
  * @param {*} res 
  * @param {*} next 
  */
-const getAllbooks = (req, res, next) => {
-
-  let books = bookService.getAllBooks();
+const getAllbooks = async (req, res, next) => {
+  const books = await bookService.getAllBooks();
 
   return res.json(globalResponseDTO(
     status = "success",
     code = 200,
-    message = `Test mesage`,
-    data = {
-      message: `Test mesage`
-    }
+    message = `List of all books in the database.`,
+    data = books
   ));
 }
 
@@ -31,16 +28,15 @@ const getAllbooks = (req, res, next) => {
  * @param {*} res 
  * @param {*} next 
  */
-const getBookById = (req, res, next) => {
-  const book = bookService.getBookById(req.param.id);
+const getBookById = async (req, res, next) => {
+  const bookId = req.param.id;
+  const book = await bookService.getBookById(bookId);
 
   return res.json(globalResponseDTO(
     status = "success",
     code = 200,
-    message = `Test mesage`,
-    data = {
-      message: `Test mesage`
-    }
+    message = `Book with the id ${bookId.id}`,
+    data = book
   ));
 }
 
@@ -51,10 +47,36 @@ const getBookById = (req, res, next) => {
  * @param {*} res 
  * @param {*} next 
  */
-const createABook = (req, res, next) => {
+const createABook = async (req, res, next) => {
+  // 2. request
   const newBook = createBookRequestDTO(req.body);
 
-  const book = bookService.createBook(req.body);
+  // 4. validation
+  // const registerUserValidator = registerUserValidator(registerUserRequest);
+
+  // 5. business logic
+  const book = await bookService.createBook(req.body);
+
+  // 7. response
+  return res.status(200).json(globalResponseDTO(
+    status = "success",
+    code = 200,
+    message = `Test mesage`,
+    data = {
+      message: `Test mesage`
+    }
+  ));
+}
+
+/**
+ * Description:
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ */
+const updateABook = async (req, res, next) => {
+  const book = await bookService.updateBookById(req.param.id, req.body);
 
   return res.json(globalResponseDTO(
     status = "success",
@@ -73,28 +95,8 @@ const createABook = (req, res, next) => {
  * @param {*} res 
  * @param {*} next 
  */
-const updateABook = (req, res, next) => {
-  const book = bookService.updateBookById(req.param.id, req.body);
-
-  return res.json(globalResponseDTO(
-    status = "success",
-    code = 200,
-    message = `Test mesage`,
-    data = {
-      message: `Test mesage`
-    }
-  ));
-}
-
-/**
- * Description:
- * 
- * @param {*} req 
- * @param {*} res 
- * @param {*} next 
- */
-const deleteABook = (req, res, next) => {
-  const book = bookService.deleteBookById(req.param.id);
+const deleteABook = async (req, res, next) => {
+  const book = await bookService.deleteBookById(req.param.id);
 
   const bookDTO = bookResponseDTO(book);
 

@@ -6,11 +6,11 @@ const bookRepository = require('../book.repository');
 const BookModel = require('../../models/book.model');
 
 beforeAll(async () => {
-  await UserModel.remove({});
+  await BookModel.remove({});
 });
 
 afterEach(async () => {
-  await UserModel.remove({});
+  await BookModel.remove({});
 });
 
 describe('Test Suite: Book Repository', () => {

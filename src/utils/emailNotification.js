@@ -1,4 +1,4 @@
-const sendEmailToUser = (toEmail, bodyText) => {
+const sendEmailToUser = (toEmail, subject, bodyText) => {
     return {
       success: true
     }

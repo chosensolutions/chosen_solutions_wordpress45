@@ -67,14 +67,14 @@ const logUserIn = (req, res, next) => {
  * @param {*} next 
  */
 const logUserOut = (req, res, next) => {
-  let user = userResponseDTO(req.session.user);
+  const user = (req.session.user) ? user = userResponseDTO(req.session.user) : {};
 
   req.session.destroy();
 
   return res.json(globalResponseDTO(
     status = "success",
     code = 200,
-    message = `user ${user.email} has successfully logged out.`,
+    message = `The user has successfully logged out.`,
     data = user
   ));
 }
@@ -87,8 +87,14 @@ const logUserOut = (req, res, next) => {
  * @param {*} next 
  */
 const getAuthUser = (req, res, next) => {
-  let user = userResponseDTO(req.session.user);
-  
+  let user;
+
+  if (!req.session.user) {
+
+  }
+
+  user = userResponseDTO(req.session.user)
+
   return res.json(globalResponseDTO(
     status = "success",
     code = 200,

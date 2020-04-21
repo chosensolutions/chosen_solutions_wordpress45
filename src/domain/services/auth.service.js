@@ -3,18 +3,21 @@ const userRepository = require('../repositories/user.repository');
 /**
  * @returns User
  */
-const registerUser = (user) => {
+const registerUser = async (user) => {
   return userRepository.createUser(user);
 }
 
 /**
  * @returns boolean
  */
-const loginUser = () => {
+const loginUser = async () => {
   return;
 }
 
-const getCurrentUser = () => {
+/**
+ * @returns User
+ */
+const getCurrentUser = async () => {
   return;
 }
 
