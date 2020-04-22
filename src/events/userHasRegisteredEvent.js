@@ -1,9 +1,14 @@
+const mailer = require('../utils/mailer');
 
+/**
+ * 
+ * @param {*} user 
+ * 
+ * @returns boolean
+ */
 const userHasRegisteredEvent = (user) => {
-
-  // send them a notification/email
-  console.log("Sending user a notification email");
-
+  let bodyText = `Hello ${user.firstName}. Thanks for registering!`
+  return mailer.sendEmailToUser(user.email, 'Welcome aboard!', bodyText);
 }
 
 module.exports = userHasRegisteredEvent;

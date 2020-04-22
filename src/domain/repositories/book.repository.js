@@ -1,37 +1,35 @@
-const BookModel = require('../models/book.model');
+const Model = require('../models/book.model');
 
-// Retrieve - all book
-const getAllBooks = async () => {
-  return await BookModel.find({});
+// Retrieve - all
+const getAll = async () => {
+  return await Model.find({});
 }
 
-// Retrieve - one book
-const getBookById = async (id) => {
-  return await BookModel.find({ id });
+// Retrieve - one
+const getById = async (id) => {
+  return await Model.find({ id });
 }
 
-// Create a book
-const createBook = async (newBook) => {
-  const newBook = new BookModel(newBook);
-  const book = await newBook.save();
-  return book;
+// Create
+const create = async (newItem) => {
+  const item = new Model(newItem);
+  return await item.save();
 }
 
-// Update a book
-const updateBookById = async (id, book) => {
-  return await BookModel.find({ id }).save(book);
+// Update
+const updateById = async (id, book) => {
+  return await Model.find({ id }).save(book);
 }
 
-// Delete a book
-const deleteBookById = async (id) => {
-  const book = await BookModel.find({ id }).remove();
-  return book;
+// Delete
+const deleteById = async (id) => {
+  return await Model.find({ id }).remove();
 }
 
 module.exports = {
-  getAllBooks,
-  getBookById,
-  createBook,
-  updateBookById,
-  deleteBookById
+  getAll,
+  getById,
+  create,
+  updateById,
+  deleteById
 };

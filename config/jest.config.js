@@ -26,7 +26,7 @@ module.exports = {
 
     // Services
     //'<rootDir>/src/domain/services/__tests__/**.test.js',
-    //'<rootDir>/src/domain/services/__tests__/book.service.test.js',
+    '<rootDir>/src/domain/services/__tests__/book.service.test.js',
     //'<rootDir>/src/domain/services/__tests__/user.service.test.js',
 
     /***** API Tests *****/

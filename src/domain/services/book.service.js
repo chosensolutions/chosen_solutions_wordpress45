@@ -1,28 +1,28 @@
 const bookRepository = require('../repositories/book.repository');
 
 // Retrieve - all books
-const getAllBooks = async (book) => {
-  return bookRepository.getAllBooks();
+const getAllBooks = async () => {
+  return bookRepository.getAll();
 }
 
 // Retrieve - one
 const getBookById = async (bookId) => {
-  return bookRepository.getBookById(bookId);
+  return bookRepository.getById(bookId);
 }
 
 // Create a book
 const createBook = async (book) => {
-  return bookRepository.createBook(book);
+  return bookRepository.create(book);
 }
 
 // Update a book
 const updateBookById = async (bookId, book) => {
-  return bookRepository.updateBookById(bookId, book);
+  return bookRepository.updateById(bookId, book);
 }
 
 // Delete a book
 const deleteBookById = async (bookId) => {
-  return bookRepository.deleteBookById(bookId);
+  return bookRepository.deleteById(bookId);
 }
 
 module.exports = {
