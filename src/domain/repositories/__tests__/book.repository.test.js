@@ -43,11 +43,11 @@ describe('Test Suite: Book Repository', () => {
     }
 
     let book = await bookRepository.create(newBook);
-    
+
     // need to implement this
     // $this->assertDatabaseHas('users', [
     //   'email' => 'sally@example.com',
-    // ]);
+    // ])
 
     //console.log(book);
   });
