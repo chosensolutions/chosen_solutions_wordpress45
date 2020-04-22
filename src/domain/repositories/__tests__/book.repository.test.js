@@ -8,12 +8,11 @@ const BookModel = require('../../models/book.model');
 const bookFactory = require('../../../../tests/testUtils/factories/bookFactory');
 
 beforeAll(async () => {
-
+  await BookModel.remove({});
 });
 
 beforeEach(async () => {
-  await BookModel.remove({});
-  const books = await bookFactory(5);
+  await bookFactory(5);
 });
 
 afterEach(async () => {
@@ -44,7 +43,8 @@ describe('Test Suite: Book Repository', () => {
     }
 
     let book = await bookRepository.create(newBook);
-
+    
+    // need to implement this
     // $this->assertDatabaseHas('users', [
     //   'email' => 'sally@example.com',
     // ]);
