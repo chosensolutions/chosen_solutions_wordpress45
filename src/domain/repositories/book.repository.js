@@ -7,7 +7,7 @@ const getAll = async () => {
 
 // Retrieve - one
 const getById = async (id) => {
-  return await Model.find({ id });
+  return await Model.findById(id);
 }
 
 // Create
@@ -18,12 +18,12 @@ const create = async (newItem) => {
 
 // Update
 const updateById = async (id, book) => {
-  return await Model.find({ id }).save(book);
+  return await Model.findByIdAndUpdate(id, book);
 }
 
 // Delete
 const deleteById = async (id) => {
-  return await Model.find({ id }).remove();
+  return await Model.findOneAndDelete({ id });
 }
 
 module.exports = {

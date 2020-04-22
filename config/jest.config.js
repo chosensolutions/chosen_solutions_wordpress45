@@ -21,12 +21,12 @@ module.exports = {
     /***** Domain *****/
     // Repositories
     //'<rootDir>/src/domain/repositories/__tests__/**.test.js',
-    //'<rootDir>/src/domain/repositories/__tests__/book.repository.test.js',
+    '<rootDir>/src/domain/repositories/__tests__/book.repository.test.js',
     //'<rootDir>/src/domain/repositories/__tests__/user.repository.test.js',
 
     // Services
     //'<rootDir>/src/domain/services/__tests__/**.test.js',
-    '<rootDir>/src/domain/services/__tests__/book.service.test.js',
+    // '<rootDir>/src/domain/services/__tests__/book.service.test.js',
     //'<rootDir>/src/domain/services/__tests__/user.service.test.js',
 
     /***** API Tests *****/
