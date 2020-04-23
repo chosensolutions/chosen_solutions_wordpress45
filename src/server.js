@@ -4,10 +4,6 @@ const bodyParser = require("body-parser");
 const app = express();
 const session = require("express-session");
 
-const mongoose = require('mongoose');
-const mongoURI = 'mongodb://127.0.0.1/my_database';
-mongoose.connect(mongoURI);
-
 const config = require('../config');
 const globalResponseDTO = require('./responses/globalResponseDTO');
 
@@ -25,13 +21,28 @@ const router = getRouter();
 app.use('/api/v1', router);
 
 // 404 API Endpoint Not Found
-router.get('*', (req, res, next) => {
-  return;
-});
+// router.get('*', (req, res, next) => {
+//   return res
+//     .status(404)
+//     .json(globalResponseDTO(
+//       status = "failed",
+//       code = 404,
+//       message = `Test message: your shit failed!`,
+//       data = {
+//         message: err.message,
+//         err: err.status
+//       },
+//     ));
+// });
 
 app.use((err, req, res, next) => {
-  console.log(err.message)
+  // log it out into the conosle
+  console.log('global error catcher:', err.name);
+  if (err.name === 'ApiException') {
+    console.log(err);
+  }
 
+  // return it in the GUI
   return res
     .status(500)
     .json(globalResponseDTO(

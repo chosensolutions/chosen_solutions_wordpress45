@@ -1,5 +1,5 @@
 const globalResponseDTO = require('../responses/globalResponseDTO');
-
+const ApiException = require('../utils/ApiException');
 /**
  * Description:
  * 
@@ -7,11 +7,20 @@ const globalResponseDTO = require('../responses/globalResponseDTO');
  * @param {*} res 
  * @param {*} next 
  */
-const getBookstoreById = (req, res, next) => {
+const getHealthCheck = (req, res, next) => {
+//  try {
+  // throw new ApiException(
+  //   status = "failed",
+  //   code = 509,
+  //   message = "Health Check Failed",
+  //   data = {}
+  // );
+  // }catch(err) {
+  //   console.log('error from health check', err)
+  // }
+  // throw new Error('Could not find the bookstore!');
 
-  throw new Error('Could not find the bookstore!');
-
-  return res.json(globalResponseDTO(
+  return res.status(200).json(globalResponseDTO(
     status = "success",
     code = 200,
     message = `Test mesage`,
@@ -22,5 +31,5 @@ const getBookstoreById = (req, res, next) => {
 }
 
 module.exports = {
-  getBookstoreById
+  getHealthCheck
 };

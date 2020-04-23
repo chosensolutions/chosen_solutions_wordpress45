@@ -19,6 +19,7 @@ const registerUserValidator = (data) => {
   let validator = new Validator(data, rules);
 
   if (validator.fails()) {
+    //console.log(validator.errors)
     throw new Error('There were errors with the validation');
   }
 

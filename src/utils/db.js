@@ -1,15 +1,9 @@
 const config = require('../../config');
-const low = require('lowdb');
-const FileSync = require('lowdb/adapters/FileSync');
 
-const adapter = new FileSync('./storage/db/' + config.db_file);
-const db = low(adapter);
+const mongoose = require('mongoose');
 
-// Set some defaults (required if your JSON file is empty)
-db.defaults({
-  users: [],
-  books: [],
-  bookstores: []
-}).write();
+const db = (url = config.mongoURI, opts = {}) => {
+  return mongoose.connect(url, { ...opts, useNewUrlParser: true })
+}
 
 module.exports = db;

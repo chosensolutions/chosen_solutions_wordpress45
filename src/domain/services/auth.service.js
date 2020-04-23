@@ -15,6 +15,13 @@ const loginUser = async () => {
 }
 
 /**
+ * @returns boolean
+ */
+const logoutUser = async () => {
+  return;
+}
+
+/**
  * @returns User
  */
 const getCurrentUser = async () => {

@@ -15,9 +15,11 @@ afterEach(async () => {
 
 describe('Test Suite: User Repository', () => {
   let testUser = {
-    name: 'Yichen Zhu',
+    first_name: 'Yichen',
+    last_name: 'Zhu',
     email: 'yichen@yichen.com',
-    password: 'password123'
+    password: 'password123',
+    phone_number: '1234567890'
   };
 
   it('User Repository - createUser', async () => {

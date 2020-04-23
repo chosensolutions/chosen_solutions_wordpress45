@@ -7,3 +7,11 @@
  module.exports = {
    
  }
+
+// assert it exists in the database
+// assert that something does not exist in the db
+
+// db(model = book).clear()
+// db(model = book).generate(10)
+
+// what about relationships?

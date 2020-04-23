@@ -1,5 +1,5 @@
 const fetch = require('node-fetch')
-const api = require('../../src/server')
+const api = require('../../../src/server')
 
 const apiPort = Math.round(Math.random() * 65535)
 const baseURL = `http://localhost:${apiPort}/api/v1`;
@@ -29,8 +29,12 @@ describe('test suite', () => {
 
   it('POST /api/v1/auth/register', async () => {
     let user = {
-      "email": "yichen@yichen.com",
-      "password": "password"
+      first_name: 'Yichen',
+      last_name: 'Zhu',
+      email: 'yichen@yichen.com',
+      password: 'password123',
+      password_confirmation: 'password123',
+      phone_number: '1234567890'
     };
 
     let response = await(await fetch(`${baseURL}/auth/register`, {
@@ -41,9 +45,7 @@ describe('test suite', () => {
 
     expect(response).toMatchObject({
       status: "success",
-      code: 200,
-      message: `The email: ${user.email} has registered.`,
-      data: user,
+      code: 200
     });
   });
 

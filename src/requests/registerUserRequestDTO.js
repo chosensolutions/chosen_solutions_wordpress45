@@ -14,7 +14,8 @@ registerUserRequestDTO = (input) => {
 
   return {
     email: input.email,
-    password: input.password
+    password: input.password,
+    password_confirmation: input.password_confirmation
   }
 }
 

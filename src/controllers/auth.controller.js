@@ -4,7 +4,8 @@ const registerUserValidator = require('../validators/registerUserValidator');
 const authService = require('../domain/services/auth.service');
 const userResponseDTO = require('../responses/userResponseDTO');
 
-var EventEmitter = require('events').EventEmitter();
+const EventEmitter = require('events');
+const eventEmitter = new EventEmitter();
 
 /**
  * Inserts the user into the database and fires off an email notification to that user's email if successful.
@@ -16,17 +17,19 @@ var EventEmitter = require('events').EventEmitter();
  * @returns globalResponseDTO
  */
 const registerUser = async (req, res, next) => {
-  // 2. request
+  // 2. middleware: none
+  
+  // 3. request
   const registerUserRequest = registerUserRequestDTO(req.body);
 
   // 4. validation
-  const registerUserValidator = registerUserValidator(registerUserRequest);
+  const registerUserValidate = registerUserValidator(registerUserRequest);
 
   // 5. business logic
   const user = authService.registerUser(registerUserRequest);
 
   // 6. event
-  EventEmitter.emit('userHasRegistered', user);
+  eventEmitter.emit('userHasRegistered', user);
 
   // 7. response
   const responseDTO = userResponseDTO(user);

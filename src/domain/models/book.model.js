@@ -14,7 +14,8 @@ const BookSchema = new mongoose.Schema({
     type: String
   },
   price: {
-    type: Number
+    type: Number,
+    required: true
   },
   author: {
     type: String

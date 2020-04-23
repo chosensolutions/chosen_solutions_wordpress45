@@ -3,22 +3,30 @@ const api = require('../../../src/server');
 
 const apiPort = Math.round(Math.random() * 65535);
 
+const db = require('../../../src/utils/db');
+let dbConnection;
+
 beforeAll(async () => {
   await api.listen(apiPort);
+  dbConnection = await db(); // start the database
 })
 
 describe('App - General API', () => {
 
-  it('GET /version', async () => {
-    const response = await fetch(`http://localhost:${apiPort}/version`);
-    const json = response.json();
-
-    expect(reponse.status).toBe(200);
-    expect(json.version).toBe(1);
+  it('GET /health', async () => {
+    const response = await fetch(`http://localhost:${apiPort}/api/v1/app/health`);
+    const json = await response.json();
+    expect(json).toEqual({
+      status: 'success',
+      code: 200,
+      message: 'Test mesage',
+      data: { message: 'Test mesage' }
+    });
   });
 
 });
 
 afterAll(async () => {
   await api.close();
+  await dbConnection.disconnect();
 });

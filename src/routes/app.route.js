@@ -3,6 +3,6 @@ const router = express.Router();
 
 const appController = require('../controllers/app.controller');
 
-router.get('/', appController.getBookstoreById);
+router.get('/health', appController.getHealthCheck);
 
 module.exports = router;

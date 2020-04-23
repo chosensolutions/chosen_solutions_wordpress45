@@ -1,3 +1,3 @@
 require('/auth.controller');
 require('/book.controller');
-require('/bookstore.controller');
+require('/app.controller');
