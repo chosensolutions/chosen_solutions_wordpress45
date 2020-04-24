@@ -5,6 +5,10 @@ beforeAll(async () => {
 
 });
 
+beforeEach(() => {
+  userRepository.createUser = jest.fn((data) => { return {} });
+});
+
 afterEach(async () => {
 
 });
@@ -16,24 +20,33 @@ afterAll(async () => {
 describe('Test Suite: Auth Service', () => {
 
   it('Auth Service - registerUser', async () => {
-    const user = await authService.registerUser();
+    let testUser = {
+      first_name: 'john',
+      last_name: 'doe',
+      email: 'john@john.com',
+      password: 'password',
+      phone_number: '4168561988', 
+    }
+    const user = await authService.registerUser(testUser);
 
-    console.log(user);
+    expect(userRepository.createUser).toHaveBeenCalledWith(testUser);
+    expect(userRepository.createUser).toHaveBeenCalledTimes(1);
+    expect(userRepository.createUser).toHaveReturnedWith({});
   });
 
-  it('Auth Service - loginUser', async () => {
+  xit('Auth Service - loginUser', async () => {
     const user = await authService.loginUser({});
 
     console.log(user);
   });
 
-  it('Auth Service - logoutUser', async () => {
+  xit('Auth Service - logoutUser', async () => {
     const user = await authService.logoutUser();
 
     console.log(user);
   });
 
-  it('Auth Service - getCurrentUser', async () => {
+  xit('Auth Service - getCurrentUser', async () => {
     const user = await authService.getCurrentUser();
 
     console.log(user);

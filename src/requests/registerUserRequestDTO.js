@@ -1,3 +1,5 @@
+const ApiException = require('../utils/ApiException');
+
 const fields = [
   'first_name',
   'last_name',
@@ -7,16 +9,27 @@ const fields = [
   'phone_number'
 ];
 
-registerUserRequestDTO = (input) => {
-  if (typeof input['email'] != 'string') {
-    throw new Error('Yo gotta give us that json!');
+/**
+ * @param Object data
+ */
+registerUserRequestDTO = (data) => {
+  const errors = [];
+  fields.forEach(field => {
+    if (!(field in data)) {
+      errors.push(`This DTO's property is required: ${field}.`);
+    }
+  });
+
+  if (errors.length > 0) {
+    throw new ApiException(
+      status = "failed",
+      code = 422,
+      message = "Health Check Failed",
+      data = errors
+    );
   }
 
-  return {
-    email: input.email,
-    password: input.password,
-    password_confirmation: input.password_confirmation
-  }
+  return data;
 }
 
 module.exports = registerUserRequestDTO;

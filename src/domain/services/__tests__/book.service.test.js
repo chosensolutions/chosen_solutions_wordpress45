@@ -19,8 +19,8 @@ afterAll(async () => {
 });
 
 describe('Book Service Test Suite', () => {
-  test("Book Service - getAllBooks", () => {
-    bookService.getAllBooks();
+  test("Book Service - getAllBooks", async () => {
+    await bookService.getAllBooks();
 
     expect(bookRepository.getAll).toHaveBeenCalledWith();
     expect(bookRepository.getAll).toHaveBeenCalledTimes(1);

@@ -17,6 +17,8 @@ const eventEmitter = new EventEmitter();
  * @returns globalResponseDTO
  */
 const registerUser = async (req, res, next) => {
+  // 1.POST  /api/v1/users
+
   // 2. middleware: none
   
   // 3. request
@@ -26,7 +28,7 @@ const registerUser = async (req, res, next) => {
   const registerUserValidate = registerUserValidator(registerUserRequest);
 
   // 5. business logic
-  const user = authService.registerUser(registerUserRequest);
+  const user = await authService.registerUser(registerUserRequest);
 
   // 6. event
   eventEmitter.emit('userHasRegistered', user);

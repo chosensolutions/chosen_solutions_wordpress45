@@ -1,4 +1,5 @@
 const registerUserRequestDTO = require('../registerUserRequestDTO');
+const ApiException = require('../../utils/ApiException');
 
 describe('Test Suite: Request', () => {
 
@@ -7,52 +8,63 @@ describe('Test Suite: Request', () => {
     let apiInputRequest = {}
 
     // 2. Act
-    let registerUserRequest = registerUserRequestDTO(apiInputRequest);
-
     // 3. Assert
-    expect(registerUserRequest).toEqual({ email: undefined, password: undefined });
+    expect(() => {
+      let registerUserRequest = registerUserRequestDTO(apiInputRequest);
+    }).toThrow(Error);
+
   });
 
   it('Correct request 2 - extra useless parameters', () => {
     // 1. Arrange
     let apiInputRequest = {
-      email: 'undefined', 
+      email: 'undefined',
       password: 'undefined',
       extraParam1: null,
       extraParam2: 'whatzup',
       body: 'John Doe is cool'
     }
-    // 2. Act
-    let registerUserRequest = registerUserRequestDTO(apiInputRequest);
 
+    // 2. Act
     // 3. Assert
-    expect(registerUserRequest).toEqual({ email: 'undefined', password: 'undefined' });
+    expect(() => {
+      let registerUserRequest = registerUserRequestDTO(apiInputRequest);
+    }).toThrow(Error);
+
   });
 
   it('Correct request 3 - happy path', () => {
     // 1. Arrange
     let apiInputRequest = {
-      email: 'yichen@yichen.com', 
+      first_name: 'Yichen',
+      last_name: 'Zhu',
+      email: 'yichen@yichen.com',
       password: 'yichen-and-his-awesome-password',
+      password_confirmation: 'yichen-and-his-awesome-password',
+      phone_number: '1234567890'
     }
+
     // 2. Act
     let registerUserRequest = registerUserRequestDTO(apiInputRequest);
 
     // 3. Assert
     expect(registerUserRequest).toEqual({
-      email: 'yichen@yichen.com', 
+      first_name: 'Yichen',
+      last_name: 'Zhu',
+      email: 'yichen@yichen.com',
       password: 'yichen-and-his-awesome-password',
+      password_confirmation: 'yichen-and-his-awesome-password',
+      phone_number: '1234567890'
     });
   });
 
-
-  it('Correct request 4 - we input in the wrong format, some random string format', () => {
+  it('Correct request 4 - we input in the wrong fields, some random string', () => {
     // 1. Arrange
-    let apiInputRequest = 'this is awesome!';
+    let apiInputRequest = { message: 'this is awesome!' };
 
     // 2. + 3. Act and Assert
     expect(() => {
       let registerUserRequest = registerUserRequestDTO(apiInputRequest);
-    }).toThrow(Error);
+    }).toThrow(ApiException);
   });
 });

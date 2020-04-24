@@ -24,14 +24,14 @@ describe('Test Suite: User Repository', () => {
 
   it('User Repository - createUser', async () => {
     let user = await userRepository.createUser(testUser);
-    const expected = 'Yichen Zhu';
-    const actual = user.name;
+    const expected = 'Yichen';
+    const actual = user.first_name;
     expect(actual).toEqual(expected);
   });
 
   xit('user Repository - checkIfUserExistsByEmailAndPassword', async () => {
     // 1. Arrange
-    // Insert user into db
+    //  - Insert user into db
     let user = await userRepository.createUser(testUser);
   
     // 2. Act

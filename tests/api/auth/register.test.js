@@ -3,9 +3,13 @@ const api = require('../../../src/server')
 
 const apiPort = Math.round(Math.random() * 65535)
 const baseURL = `http://localhost:${apiPort}/api/v1`;
+const db = require('../../../src/utils/db');
+let dbConnection;
 
 beforeAll(async () => {
-  await api.listen(apiPort)
+  //await db();
+  await api.listen(apiPort);
+  dbConnection = await db(); // start the database
 })
 
 beforeEach(() => {
@@ -43,9 +47,13 @@ describe('test suite', () => {
       body: JSON.stringify(user)
     })).json();
 
+    delete user.password_confirmation;
+
     expect(response).toMatchObject({
       status: "success",
-      code: 200
+      code: 200,
+      message: `The email: ${user.email} has successfully registered.`,
+      data: user
     });
   });
 
@@ -53,4 +61,5 @@ describe('test suite', () => {
 
 afterAll(async () => {
   await api.close();
+  await dbConnection.disconnect();
 })

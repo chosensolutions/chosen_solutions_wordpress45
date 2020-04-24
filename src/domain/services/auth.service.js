@@ -4,7 +4,8 @@ const userRepository = require('../repositories/user.repository');
  * @returns User
  */
 const registerUser = async (user) => {
-  return userRepository.createUser(user);
+  const createdUser = await userRepository.createUser(user);
+  return createdUser;
 }
 
 /**
