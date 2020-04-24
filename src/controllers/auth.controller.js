@@ -20,7 +20,7 @@ const registerUser = async (req, res, next) => {
   // 1.POST  /api/v1/users
 
   // 2. middleware: none
-  
+
   // 3. request
   const registerUserRequest = registerUserRequestDTO(req.body);
 
@@ -28,7 +28,13 @@ const registerUser = async (req, res, next) => {
   const registerUserValidate = registerUserValidator(registerUserRequest);
 
   // 5. business logic
-  const user = await authService.registerUser(registerUserRequest);
+  let user = {};
+  try {
+    user = await authService.registerUser(registerUserRequest);
+  }
+  catch (err) {
+    next(err);
+  }
 
   // 6. event
   eventEmitter.emit('userHasRegistered', user);

@@ -6,6 +6,8 @@ const baseURL = `http://localhost:${apiPort}/api/v1`;
 const db = require('../../../src/utils/db');
 let dbConnection;
 
+const ApiException = require('../../../src/utils/ApiException');
+
 beforeAll(async () => {
   //await db();
   await api.listen(apiPort);
@@ -29,9 +31,9 @@ afterEach(() => {
  *  1. database check
  *  2. response check
  */
-describe('test suite', () => {
+describe('API Test - Register User', () => {
 
-  it('POST /api/v1/auth/register', async () => {
+  it('POST /api/v1/auth/register - happy path', async () => {
     let user = {
       first_name: 'Yichen',
       last_name: 'Zhu',
@@ -55,6 +57,34 @@ describe('test suite', () => {
       message: `The email: ${user.email} has successfully registered.`,
       data: user
     });
+  });
+
+  xit('POST /api/v1/auth/register - duplicate email', async () => {
+    let user = {
+      first_name: 'Yichen',
+      last_name: 'Zhu',
+      email: 'yichen@yichen.com',
+      password: 'password123',
+      password_confirmation: 'password123',
+      phone_number: '1234567890'
+    };
+
+    // delete user.password_confirmation;
+
+    expect(async () => {
+      await(await fetch(`${baseURL}/auth/register`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(user)
+      })).json();
+
+      await(await fetch(`${baseURL}/auth/register`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(user)
+      })).json();
+
+    }).toThrow(ApiException);
   });
 
 });
