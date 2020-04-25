@@ -19,8 +19,9 @@ describe('App - General API', () => {
     expect(json).toEqual({
       status: 'success',
       code: 200,
-      message: 'Test mesage',
-      data: { message: 'Test mesage' }
+      message: `The application is up and running!`,
+      data: {},
+      errors: null
     });
   });
 

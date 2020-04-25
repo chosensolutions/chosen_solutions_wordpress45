@@ -19,10 +19,11 @@ describe('Books API', () => {
     let response = await (await fetch(`${baseURL}/books`)).json();
 
     expect(response).toEqual({
-      "status": "success",
-      "code": 200,
-      "message": "List of all books in the database.",
-      data: []
+      status: 'success',
+      code: 200,
+      message: "List of all books in the database.",
+      data: [],
+      errors: null
     });
   });
 

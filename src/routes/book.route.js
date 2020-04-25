@@ -11,4 +11,4 @@ router.post('/', isAuthenticated, bookController.createABook);
 router.put('/:id', isAuthenticated, bookController.updateABook);
 router.delete('/:id', isAuthenticated, bookController.deleteABook);
 
-module.exports = router
+module.exports = router;
