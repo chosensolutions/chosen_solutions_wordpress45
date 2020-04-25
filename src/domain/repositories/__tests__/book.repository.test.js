@@ -8,7 +8,7 @@ const BookModel = require('../../models/book.model');
 const bookFactory = require('../../../../tests/testUtils/factories/bookFactory');
 
 beforeAll(async () => {
-  await BookModel.remove({});
+  await BookModel.deleteMany({});
 });
 
 beforeEach(async () => {
@@ -16,7 +16,7 @@ beforeEach(async () => {
 });
 
 afterEach(async () => {
-  await BookModel.remove({});
+  await BookModel.deleteMany({});
 });
 
 describe('Test Suite: Book Repository', () => {

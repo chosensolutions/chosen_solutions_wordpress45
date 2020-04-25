@@ -6,11 +6,11 @@ const userRepository = require('../user.repository');
 const UserModel = require('../../models/user.model');
 
 beforeAll(async () => {
-  await UserModel.remove({});
+  await UserModel.deleteMany({});
 });
 
 afterEach(async () => {
-  await UserModel.remove({});
+  await UserModel.deleteMany({});
 });
 
 describe('Test Suite: User Repository', () => {
