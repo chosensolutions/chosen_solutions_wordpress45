@@ -7,8 +7,11 @@ const isAuthenticated = (req, res, next) => {
             .json(globalResponseDTO(
                 status = "failed",
                 code = 401,
-                message = "Your must be logged in to access this API endpoint.",
-                data = {}
+                message = "You must be logged in to access this API endpoint.",
+                data = {},
+                errors = [
+                    "You must be logged in."
+                ]
             ));
     }
 
