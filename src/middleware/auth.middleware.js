@@ -7,7 +7,7 @@ const isAuthenticated = (req, res, next) => {
             .json(globalResponseDTO(
                 status = "failed",
                 code = 401,
-                message = "You must be logged in to access this API endpoint.",
+                message = "Acces denied: you must be logged in to access this API endpoint.",
                 data = {},
                 errors = [
                     "You must be logged in."
@@ -19,13 +19,3 @@ const isAuthenticated = (req, res, next) => {
 };
 
 module.exports = isAuthenticated;
-
-// app.use(function (req, res, next) {
-//     req.user = ('user' in req.session) ? req.session.user : null;
-//     next();
-// });
-// app.use(function (req, res, next) {
-//     req.username = req.session.username ? req.session.username : null;
-//     console.log("HTTP request", req.username, req.method, req.url, req.body);
-//     next();
-// });

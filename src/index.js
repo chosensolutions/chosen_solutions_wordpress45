@@ -8,8 +8,8 @@ server.listen(PORT, async () => {
   console.log(`Started on port ${PORT}`);
 })
 
-process.on("unhandledRejection", error => {
-  console.log(error.message);
-  console.log("--------------------------");
-  process.exit(1);
-});
+// process.on("unhandledRejection", error => {
+//   console.log(error.message);
+//   console.log("--------------------------");
+//   process.exit(1);
+// });

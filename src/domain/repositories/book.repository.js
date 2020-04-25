@@ -7,7 +7,9 @@ const getAll = async () => {
 
 // Retrieve - one
 const getById = async (id) => {
-  return await Model.findById(id);
+  let item = await Model.findById(id);
+  console.log('item', item);
+  return item;
 }
 
 // Create

@@ -3,6 +3,8 @@ const createBookRequestDTO = require('../requests/createBookRequestDTO');
 const bookService = require('../domain/services/book.service');
 const bookResponseDTO = require('../responses/bookResponseDTO');
 
+const catchException = require('../utils/catchExceptions');
+
 /**
  * Description:
  * 
@@ -14,10 +16,11 @@ const getAllbooks = async (req, res, next) => {
   const books = await bookService.getAllBooks();
 
   return res.json(globalResponseDTO(
-    status = "success",
+    status = 'success',
     code = 200,
     message = `List of all books in the database.`,
-    data = books
+    data = books,
+    errors = null
   ));
 }
 
@@ -28,24 +31,19 @@ const getAllbooks = async (req, res, next) => {
  * @param {*} res 
  * @param {*} next 
  */
-const getBookById = async (req, res, next) => {
-  const bookId = req.param.id;
+const getBookById = catchException(async (req, res, next) => {
+  const bookId = req.params.id;
   
-  let book = {};
-  try {
-    book = await bookService.getBookById(bookId);
-  }
-  catch (err) {
-    next(err);
-  }
+  let book = await bookService.getBookById(bookId);
 
   return res.json(globalResponseDTO(
-    status = "success",
+    status = 'success',
     code = 200,
-    message = `Book with the id ${bookId}`,
-    data = book
+    message = `Book with the specified id.`,
+    data = book,
+    errors = null
   ));
-}
+});
 
 /**
  * Description:

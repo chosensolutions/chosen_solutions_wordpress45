@@ -44,12 +44,13 @@ app.use((err, req, res, next) => {
     console.error('ApiException', err);
 
     return res
-      .status(err.status)
+      .status(err.code)
       .json(globalResponseDTO(
         status = err.status,
-        code = err.status,
+        code = err.code,
         message = err.message,
         data = err.data,
+        errors = err.errors
       ));
   }
   else if (err.name === 'MongoError') {
@@ -68,6 +69,9 @@ app.use((err, req, res, next) => {
           ]
         ));
     }
+  }
+  else {
+    console.error('Other Error', err);
   }
 });
 
