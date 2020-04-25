@@ -30,12 +30,19 @@ const getAllbooks = async (req, res, next) => {
  */
 const getBookById = async (req, res, next) => {
   const bookId = req.param.id;
-  const book = await bookService.getBookById(bookId);
+  
+  let book = {};
+  try {
+    book = await bookService.getBookById(bookId);
+  }
+  catch (err) {
+    next(err);
+  }
 
   return res.json(globalResponseDTO(
     status = "success",
     code = 200,
-    message = `Book with the id ${bookId.id}`,
+    message = `Book with the id ${bookId}`,
     data = book
   ));
 }

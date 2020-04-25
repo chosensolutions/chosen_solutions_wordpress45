@@ -1,19 +1,11 @@
-/**
- * 
- * @return {
- *  email,
- *  password
- * }
- */
-registerUserRequestDTO = (input) => {
-  if (typeof input != 'object') {
-    throw new Error('Yo gotta give us that json!');
-  }
+const ApiException = require('../utils/ApiException');
 
-  return {
-    email: input.email,
-    password: input.password
-  }
+const fields = [
+
+];
+
+const updateBookRequestDTO = (data) => {
+  return data;
 }
 
-module.exports = registerUserRequestDTO;
+module.exports = updateBookRequestDTO;

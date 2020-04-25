@@ -37,23 +37,38 @@ app.use('/api/v1', router);
 
 app.use((err, req, res, next) => {
   // log it out into the conosle
-  console.log('global error catcher:', err.name);
+  console.log('===============================');
+  console.log('Global Error Catcher:', err.name);
+  console.log('===============================');
   if (err.name === 'ApiException') {
-    console.log(err);
-  }
+    console.error('ApiException', err);
 
-  // return it in the GUI
-  return res
-    .status(500)
-    .json(globalResponseDTO(
-      status = "failed",
-      code = 500,
-      message = `Test mesage: your shit failed!`,
-      data = {
-        message: err.message,
-        err: err.status
-      },
-    ));
+    return res
+      .status(err.status)
+      .json(globalResponseDTO(
+        status = err.status,
+        code = err.status,
+        message = err.message,
+        data = err.data,
+      ));
+  }
+  else if (err.name === 'MongoError') {
+    console.error('MongoError', err);
+
+    if (err.errmsg.includes('E11000 duplicate key error')) {
+      return res
+        .status(400)
+        .json(globalResponseDTO(
+          status = 'failed',
+          code = 400,
+          message = err.errmsg,
+          data = null,
+          errors = [
+            'This email is already taken.'
+          ]
+        ));
+    }
+  }
 });
 
 // Event listeners

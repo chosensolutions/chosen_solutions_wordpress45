@@ -25,14 +25,11 @@ const createUser = async (userData) => {
  *  - password
  * }
  * 
- * @returns boolean
+ * @returns user
  */
-const checkIfUserExistsByEmailAndPassword = async (userData) => {
-  const foundUser = await User.findOne(userData);
-  
-  if (foundUser) {
-    return true;
-  }
+const findUserByEmailAndPassword = async (userData) => {
+  const foundUser = await UserModel.findOne(userData);
+  return foundUser;
 }
 
 /**
@@ -48,6 +45,6 @@ const getUserById = async (id) => {
 
 module.exports = {
   createUser,
-  checkIfUserExistsByEmailAndPassword,
+  findUserByEmailAndPassword,
   getUserById
 }

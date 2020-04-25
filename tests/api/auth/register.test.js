@@ -3,13 +3,12 @@ const api = require('../../../src/server')
 
 const apiPort = Math.round(Math.random() * 65535)
 const baseURL = `http://localhost:${apiPort}/api/v1`;
+
 const db = require('../../../src/utils/db');
 let dbConnection;
-
 const ApiException = require('../../../src/utils/ApiException');
 
 beforeAll(async () => {
-  //await db();
   await api.listen(apiPort);
   dbConnection = await db(); // start the database
 })
@@ -33,7 +32,7 @@ afterEach(() => {
  */
 describe('API Test - Register User', () => {
 
-  it('POST /api/v1/auth/register - happy path', async () => {
+  xit('POST /api/v1/auth/register - happy path', async () => {
     let user = {
       first_name: 'Yichen',
       last_name: 'Zhu',
@@ -72,12 +71,6 @@ describe('API Test - Register User', () => {
     // delete user.password_confirmation;
 
     expect(async () => {
-      await(await fetch(`${baseURL}/auth/register`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(user)
-      })).json();
-
       await(await fetch(`${baseURL}/auth/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

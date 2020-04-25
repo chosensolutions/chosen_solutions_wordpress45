@@ -29,17 +29,16 @@ describe('Test Suite: User Repository', () => {
     expect(actual).toEqual(expected);
   });
 
-  xit('user Repository - checkIfUserExistsByEmailAndPassword', async () => {
+  xit('user Repository - findUserByEmailAndPassword', async () => {
     // 1. Arrange
-    //  - Insert user into db
     let user = await userRepository.createUser(testUser);
   
     // 2. Act
-    const foundUser = await userRepository.checkIfUserExistsByEmailAndPassword(testUser)
+    const foundUser = await userRepository.findUserByEmailAndPassword(user)
   
     // 3. Assert
-    const expected = 'Yichen Zhu';
-    const actual = foundUser.name;
+    const expected = 'Yichen';
+    const actual = foundUser.first_name;
     expect(actual).toEqual(expected);
   });
 

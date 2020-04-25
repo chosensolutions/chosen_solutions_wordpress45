@@ -29,6 +29,7 @@ module.exports = {
     // Requests
     //'<rootDir>/src/requests/__tests__/**.test.js',
     '<rootDir>/src/requests/__tests__/registerUserRequestDTO.test.js',
+    '<rootDir>/src/requests/__tests__/loginUserRequestDTO.test.js',
 
     // Responses
     //'<rootDir>/src/responses/__tests__/**.test.js',
@@ -63,6 +64,7 @@ module.exports = {
 
     // Book
     //'<rootDir>/tests/api/book/**.test.js',
+    '<rootDir>/tests/api/book/get.test.js',
 
     
     /*******************************************************************************/
