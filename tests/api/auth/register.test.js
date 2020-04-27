@@ -6,6 +6,7 @@ const baseURL = `http://localhost:${apiPort}/api/v1`;
 
 const db = require('../../../src/utils/db');
 let dbConnection;
+const dbTestUtils = require('../../../tests/testUtils/dbTestUtil');
 const ApiException = require('../../../src/utils/ApiException');
 
 beforeAll(async () => {
@@ -13,12 +14,17 @@ beforeAll(async () => {
   dbConnection = await db(); // start the database
 })
 
-beforeEach(() => {
-  //initializeCityDatabase();
+beforeEach(async () => {
+  await dbTestUtils.setUpDatabase();
 });
 
-afterEach(() => {
-  //clearCityDatabase();
+afterEach(async () => {
+  await dbTestUtils.clearDatabase();
+});
+
+afterAll(async () => {
+  await api.close();
+  await dbConnection.disconnect();
 });
 
 /**
@@ -27,8 +33,7 @@ afterEach(() => {
  * 2. Act
  *  - making the http call
  * 3. Assert
- *  1. database check
- *  2. response check
+ *  - response check
  */
 describe('API Test - Register User', () => {
 
@@ -58,31 +63,4 @@ describe('API Test - Register User', () => {
     });
   });
 
-  xit('POST /api/v1/auth/register - duplicate email', async () => {
-    let user = {
-      first_name: 'Yichen',
-      last_name: 'Zhu',
-      email: 'yichen@yichen.com',
-      password: 'password123',
-      password_confirmation: 'password123',
-      phone_number: '1234567890'
-    };
-
-    // delete user.password_confirmation;
-
-    expect(async () => {
-      await(await fetch(`${baseURL}/auth/register`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(user)
-      })).json();
-
-    }).toThrow(ApiException);
-  });
-
 });
-
-afterAll(async () => {
-  await api.close();
-  await dbConnection.disconnect();
-})

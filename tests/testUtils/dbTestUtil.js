@@ -16,16 +16,11 @@ const clearDatabase = async () => {
   await UserModel.deleteMany({});
 }
 
-/**
- * dbTestUtil.getAllTableData(require('./models/user.model'));
- * will return:
- * [
- *  user {},
- *  user {},
- *  user {}
- *  ...
- * ]
- */
+const seeInDatabase = async (Model, item) => {
+  let findItem = await Model.findById(item.id);
+  return findItem;
+}
+
 const getAllTableData = async (Model) => {
   return await Model.find({});
 }
@@ -33,5 +28,6 @@ const getAllTableData = async (Model) => {
 module.exports = {
   setUpDatabase,
   clearDatabase,
-  getAllTableData
+  getAllTableData,
+  seeInDatabase
 }

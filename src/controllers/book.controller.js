@@ -7,10 +7,6 @@ const catchException = require('../utils/catchExceptions');
 
 /**
  * Description:
- * 
- * @param {*} req 
- * @param {*} res 
- * @param {*} next 
  */
 const getAllbooks = catchException(async (req, res, next) => {
   // 5. business logic
@@ -28,10 +24,6 @@ const getAllbooks = catchException(async (req, res, next) => {
 
 /**
  * Description:
- * 
- * @param {*} req 
- * @param {*} res 
- * @param {*} next 
  */
 const getBookById = catchException(async (req, res, next) => {
   const bookId = req.params.id;
@@ -51,10 +43,6 @@ const getBookById = catchException(async (req, res, next) => {
 
 /**
  * Description:
- * 
- * @param {*} req 
- * @param {*} res 
- * @param {*} next 
  */
 const createABook = catchException(async (req, res, next) => {
   // 1. POST /api/v1/books
@@ -84,10 +72,6 @@ const createABook = catchException(async (req, res, next) => {
 
 /**
  * Description:
- * 
- * @param {*} req 
- * @param {*} res 
- * @param {*} next 
  */
 const updateABook = catchException(async (req, res, next) => {
   // 5. business logic
@@ -105,10 +89,6 @@ const updateABook = catchException(async (req, res, next) => {
 
 /**
  * Description:
- * 
- * @param {*} req 
- * @param {*} res 
- * @param {*} next 
  */
 const deleteABook = catchException(async (req, res, next) => {
   // 5. business logic

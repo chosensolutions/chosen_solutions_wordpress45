@@ -23,7 +23,7 @@ const updateById = async (id, book) => {
 
 // Delete
 const deleteById = async (id) => {
-  return await Model.findOneAndDelete({ id });
+  return await Model.deleteOne({ _id: id });
 }
 
 module.exports = {

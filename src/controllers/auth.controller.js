@@ -15,12 +15,6 @@ const catchExceptions = require('../utils/catchExceptions');
 
 /**
  * Inserts the user into the database and fires off an email notification to that user's email if successful.
- * 
- * @param {*} req 
- * @param {*} res 
- * @param {*} next 
- * 
- * @returns globalResponseDTO
  */
 const registerUser = catchExceptions(async (req, res, next) => {
   // 1. POST /api/v1/auth/register /
@@ -51,10 +45,6 @@ const registerUser = catchExceptions(async (req, res, next) => {
 
 /**
  * Logs the user in and set a session for it.
- * 
- * @param {*} req 
- * @param {*} res 
- * @param {*} next 
  */
 const logUserIn = catchExceptions(async (req, res, next) => {
   // 1. POST /api/v1/auth/login /
@@ -102,10 +92,6 @@ const logUserIn = catchExceptions(async (req, res, next) => {
 
 /**
  * Logs the currently authenticated user out of the current session.
- * 
- * @param {*} req 
- * @param {*} res 
- * @param {*} next 
  */
 const logUserOut = catchExceptions((req, res, next) => {
   // 1. route: GET /api/v1/auth/logout
@@ -133,10 +119,6 @@ const logUserOut = catchExceptions((req, res, next) => {
 
 /**
  * Gets the currently authenticated user in the current session.
- * 
- * @param {*} req 
- * @param {*} res 
- * @param {*} next 
  */
 const getAuthUser = catchExceptions((req, res, next) => {
   // 1. route: GET /api/v1/auth/user

@@ -1,12 +1,8 @@
 const globalResponseDTO = require('../responses/globalResponseDTO');
-const ApiException = require('../utils/ApiException');
 
 /**
  * Description:
  * 
- * @param {*} req 
- * @param {*} res 
- * @param {*} next 
  */
 const getHealthCheck = (req, res, next) => {
   return res.status(200).json(globalResponseDTO(

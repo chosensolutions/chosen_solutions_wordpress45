@@ -1,16 +1,24 @@
-const config = require('../../../../config');
-const mongoose = require("mongoose");
-mongoose.connect(config.mongoURI, { useNewUrlParser: true });
+const db = require('../../../utils/db');
+let dbConnection;
+const dbTestUtils = require('../../../../tests/testUtils/dbTestUtil');
 
 const userRepository = require('../user.repository');
 const UserModel = require('../../models/user.model');
 
 beforeAll(async () => {
-  await UserModel.deleteMany({});
+  dbConnection = await db();
+});
+
+beforeEach(async () => {
+  await dbTestUtils.setUpDatabase();
 });
 
 afterEach(async () => {
-  await UserModel.deleteMany({});
+  await dbTestUtils.clearDatabase();
+});
+
+afterAll(async () => {
+  await dbConnection.disconnect();
 });
 
 describe('Test Suite: User Repository', () => {
@@ -56,8 +64,4 @@ describe('Test Suite: User Repository', () => {
     // expect(actual).toEqual(expected);
   });
 
-});
-
-afterAll(async () => {
-  await mongoose.connection.close();
 });
