@@ -9,7 +9,7 @@ const userResponseDTO = require('../responses/userResponseDTO');
 const EventEmitter = require('events');
 const eventEmitter = new EventEmitter();
 
-const catchExceptions = require('../utils/catchExceptions')
+const catchExceptions = require('../utils/catchExceptions');
 
 /**
  * Inserts the user into the database and fires off an email notification to that user's email if successful.
@@ -32,24 +32,17 @@ const registerUser = catchExceptions(async (req, res, next) => {
   const registerUserValidation = registerUserValidator(registerUserRequest);
 
   // 5. business logic
-  let user = {};
-  //try {
-    user = await authService.registerUser(registerUserRequest);
-  //}
-  //catch (err) {
-  //  next(err);
-  //}
+  let user = await authService.registerUser(registerUserRequest);
 
   // 6. event
   eventEmitter.emit('userHasRegistered', user);
 
   // 7. response
-  const responseDTO = userResponseDTO(user);
   return res.json(globalResponseDTO(
     status = "success",
     code = 200,
     message = `The email: ${responseDTO.email} has successfully registered.`,
-    data = responseDTO,
+    data = userResponseDTO(user),
     errors = null
   ));
 });
@@ -61,7 +54,7 @@ const registerUser = catchExceptions(async (req, res, next) => {
  * @param {*} res 
  * @param {*} next 
  */
-const logUserIn = async (req, res, next) => {
+const logUserIn = catchExceptions(async (req, res, next) => {
   // 1. POST /api/v1/auth/login
 
   // 2. middleware: none
@@ -96,14 +89,14 @@ const logUserIn = async (req, res, next) => {
   // eventEmitter.emit('userHasLoggedIn', user);
 
   // 7. response
-  return res.json(globalResponseDTO(
+  return res.status(200).json(globalResponseDTO(
     status = 'success',
     code = 200,
     message = `The user has successfully logged in.`,
     data = loggedInUser,
     errors = null
   ));
-}
+});
 
 /**
  * Logs the currently authenticated user out of the current session.
@@ -112,7 +105,7 @@ const logUserIn = async (req, res, next) => {
  * @param {*} res 
  * @param {*} next 
  */
-const logUserOut = (req, res, next) => {
+const logUserOut = catchExceptions((req, res, next) => {
   // 1. GET /api/v1/auth/logout
 
   // 2. middleware: none
@@ -134,7 +127,7 @@ const logUserOut = (req, res, next) => {
     data = {},
     errors = null
   ));
-}
+});
 
 /**
  * Gets the currently authenticated user in the current session.
@@ -143,7 +136,7 @@ const logUserOut = (req, res, next) => {
  * @param {*} res 
  * @param {*} next 
  */
-const getAuthUser = (req, res, next) => {
+const getAuthUser = catchExceptions((req, res, next) => {
   // 1. GET /api/v1/auth/user
 
   // 2. middleware: none
@@ -153,22 +146,24 @@ const getAuthUser = (req, res, next) => {
   // 4. validation
 
   // 5. business logic
+  const user = null;
+  let message;
   if (!req.session.user) {
     // throw exception here
   }
-  const user = req.session.user;
+  user = req.session.user;
 
   // 6. event
 
   // 7. response
-  return res.json(globalResponseDTO(
+  return res.status(200).json(globalResponseDTO(
     status = 'success',
     code = 200,
     message = `Here is the currently authenticated user's information.`,
-    data = user,
+    data = userResponseDTO(user),
     errors = null
   ));
-}
+});
 
 module.exports = {
   registerUser,

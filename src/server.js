@@ -8,11 +8,17 @@ const config = require('../config');
 const globalResponseDTO = require('./responses/globalResponseDTO');
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+const MongoStore = require('connect-mongo')(session);
+const mongoose = require('mongoose');
+
 app.use(
   session({
-    secret: config.sessionSecret,
-    resave: false,
-    saveUninitialized: true
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection, collection: 'sessions' })
   })
 );
 
@@ -20,6 +26,7 @@ const getRouter = require('./routes');
 const router = getRouter();
 app.use('/api/v1', router);
 
+/////////////////////////////////////////////////////////////////////////
 // 404 API Endpoint Not Found
 // router.get('*', (req, res, next) => {
 //   return res
@@ -33,6 +40,10 @@ app.use('/api/v1', router);
 //         err: err.status
 //       },
 //     ));
+// });
+// // catch 404 and forward to error handler
+// app.use((req, res, next) => {
+//   next(createError(404));
 // });
 
 app.use((err, req, res, next) => {

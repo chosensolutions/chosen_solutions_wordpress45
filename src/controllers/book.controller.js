@@ -62,7 +62,9 @@ const createABook = catchException(async (req, res, next) => {
   // 2. middleware: auth
 
   // 3. request
-  const createBookRequest = createBookRequestDTO(req.body);
+  const createBookRequest = createBookRequestDTO({ id: req.session.user.id, ...req.body});
+
+  console.log(createBookRequest);
 
   // 4. validation
   const createBookValidation = createBookRequestDTO(createBookRequest);

@@ -38,6 +38,7 @@ module.exports = {
     // Validators
     //'<rootDir>/src/validators/__tests__/**.test.js',
     '<rootDir>/src/validators/__tests__/registerUserValidator.test.js',
+    '<rootDir>/src/validators/__tests__/createBookValidator.test.js',
 
     // Events
     //'<rootDir>/src/events/__tests__/**.test.js',

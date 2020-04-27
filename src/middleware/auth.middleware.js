@@ -1,7 +1,8 @@
 const globalResponseDTO = require('../responses/globalResponseDTO');
 
 const isAuthenticated = (req, res, next) => {
-    if (!req.user) {
+    console.log(req.session)
+    if (!req.session.user) {
         return res
             .status(401)
             .json(globalResponseDTO(
