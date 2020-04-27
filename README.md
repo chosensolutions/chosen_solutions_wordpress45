@@ -7,10 +7,7 @@ This is the starter kit for building any Node.js backend system. This starter ki
 - MongoDB
 
 ## Configuration Setup
-Make sure to setup the configuration properly
-```
-./config
-```
+Make sure to setup the configuration properly in the config directory.
 
 ## Starting MongoDB
 ```
@@ -31,5 +28,5 @@ It will start at http://localhost:5000
 
 ## Running Tests
 ```
-npm run tests
+npm run test
 ```

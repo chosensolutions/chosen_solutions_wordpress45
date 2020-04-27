@@ -1,8 +1,9 @@
 module.exports = {
-  dbFile: 'db.testing.json',
   baseUrl: 'http://localhost:',
   port: Math.round(Math.random() * 65535),
-  mongoURI: 'mongodb://localhost:27017/test_db',
   apiPrefix: 'api/v1',
+  apiVersion: 'v1',
+  fullUrl: `${this.baseUrl}${port}/${apiPrefix}`,
+  mongoURI: 'mongodb://localhost:27017/test_db',
   sessionSecret: 'my-secret-session-testing'
 }
