@@ -16,7 +16,7 @@ const getAllbooks = catchException(async (req, res, next) => {
   // 5. business logic
   const books = await bookService.getAllBooks();
 
-    // 7. response
+  // 7. response
   return res.json(globalResponseDTO(
     status = 'success',
     code = 200,

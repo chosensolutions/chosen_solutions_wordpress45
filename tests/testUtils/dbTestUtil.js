@@ -5,7 +5,10 @@
  */
 
  module.exports = {
-   
+   clearTable: () => {},
+   buildDatabase: () => {},
+   clearDatabase: () => {},
+   getTable: (Model) => {}
  }
 
 // assert it exists in the database

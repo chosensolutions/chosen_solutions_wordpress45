@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const BookSchema = new mongoose.Schema({
-  user: {
+  userId: {
     type: Schema.Types.ObjectId,
     ref: 'user'
   },

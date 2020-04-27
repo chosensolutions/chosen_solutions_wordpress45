@@ -1,14 +1,12 @@
 const globalResponseDTO = require('../responses/globalResponseDTO');
+const bookService = require('../domain/services/book.service');
 
-const bookPermission = (req, res, next) => {
-    /*
-    When updating or deleting a book, the book must belong to the user that created it
-    */
-    // let bookId = req.params.bookId;
-    // let book = bookService.getByBookId(bookId);
-    // if (req.session.user.id === book.userId) {
-    //     next();
-    // }
+const bookPermission = async (req, res, next) => {
+    // When updating or deleting a book, the book must belong to the user that created it
+    // let bookId = req.params.id;
+    // let book = await bookService.getBookById(bookId);
+    // if (req.session.user.id === book.userId)
+        next();
 
     // return res
     //     .status(401)

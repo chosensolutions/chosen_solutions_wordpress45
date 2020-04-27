@@ -43,7 +43,7 @@ const registerUser = catchExceptions(async (req, res, next) => {
   return res.json(globalResponseDTO(
     status = "success",
     code = 200,
-    message = `The email: ${responseDTO.email} has successfully registered.`,
+    message = `The email: ${registerUserRequest.email} has successfully registered.`,
     data = userResponseDTO(user),
     errors = null
   ));

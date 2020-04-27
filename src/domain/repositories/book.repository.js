@@ -7,15 +7,13 @@ const getAll = async () => {
 
 // Retrieve - one
 const getById = async (id) => {
-  let item = await Model.findById(id);
-  // console.log('item', item);
-  return item;
+  return await Model.findById(id);
 }
 
 // Create
-const create = async (newItem) => {
-  const item = new Model(newItem);
-  return await item.save();
+const create = async (newBook) => {
+  const book = new Model(newBook);
+  return await book.save();
 }
 
 // Update

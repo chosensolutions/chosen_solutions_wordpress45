@@ -1,19 +1,24 @@
 const faker = require('faker');
+const Model = require('../../../src/domain/models/user.model');
+const bookFactory = require('../../../tests/testUtils/factories/bookFactory');
 
-const userFactory = (Model, numberOfSeeds) => {
+const factory = async (numberOfSeeds) => {
   for (let i = 1; i <= numberOfSeeds; i++) {
-    const user = new Model({
-      name: faker.name.findName()
-    })
+    let entityFields = {
+      
+      first_name: faker.name.firstName(),
+      last_name: faker.name.lastName(),
+      email: faker.internet.email(),
+      password: faker.internet.password(),
+      phone_number: faker.phone.phoneNumber()
+    }
 
-    user.save();
+    const entity = new Model(entityFields);
+
+    const user = await entity.save();
+
+    await bookFactory(3, user.id);
   }
 }
 
-module.exports = userFactory;
-
-/**
- * Creates 100 Users in the database.
- * 
- * userFactory(require('./UserModel'), 100);
- */
+module.exports = factory;

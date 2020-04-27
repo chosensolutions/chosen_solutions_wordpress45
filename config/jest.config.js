@@ -9,7 +9,7 @@ module.exports = {
     // Repositories
     //'<rootDir>/src/domain/repositories/__tests__/**.test.js',
     '<rootDir>/src/domain/repositories/__tests__/book.repository.test.js',
-    '<rootDir>/src/domain/repositories/__tests__/user.repository.test.js',
+    // '<rootDir>/src/domain/repositories/__tests__/user.repository.test.js',
 
     // Services
     //'<rootDir>/src/domain/services/__tests__/**.test.js',
@@ -80,7 +80,7 @@ module.exports = {
     //'<rootDir>/tests/api/book/**.test.js',
     // '<rootDir>/tests/api/book/create.test.js',
     // '<rootDir>/tests/api/book/delete.test.js',
-    '<rootDir>/tests/api/book/get.test.js',
+    //'<rootDir>/tests/api/book/get.test.js',
     // '<rootDir>/tests/api/book/update.test.js',
 
 
