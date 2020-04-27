@@ -8,7 +8,7 @@ const getAll = async () => {
 // Retrieve - one
 const getById = async (id) => {
   let item = await Model.findById(id);
-  console.log('item', item);
+  // console.log('item', item);
   return item;
 }
 

@@ -42,7 +42,6 @@ describe('Books API', () => {
     });
   });
 
-
 });
 
 afterAll(async () => {

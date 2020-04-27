@@ -27,7 +27,7 @@ describe('Book Service Test Suite', () => {
     expect(bookRepository.getAll).toHaveReturnedWith([]);
   });
 
-  test("Book Service - getAllBookById", () => {
+  xtest("Book Service - getAllBookById", () => {
     bookService.getBookById(1);
 
     expect(bookRepository.getById).toHaveBeenCalledWith(1);
@@ -35,7 +35,7 @@ describe('Book Service Test Suite', () => {
     //expect(bookRepository.getById).toHaveReturnedWith({});
   });
 
-  test("Book Service - createBook", () => {
+  xtest("Book Service - createBook", () => {
     bookService.getAllBooks();
 
     expect(bookRepository.getAll).toHaveBeenCalledWith();
@@ -43,7 +43,7 @@ describe('Book Service Test Suite', () => {
     expect(bookRepository.getAll).toHaveReturnedWith([]);
   });
 
-  test("Book Service - updateBookById", () => {
+  xtest("Book Service - updateBookById", () => {
     bookService.getAllBooks();
 
     expect(bookRepository.getAll).toHaveBeenCalledWith();
@@ -51,7 +51,7 @@ describe('Book Service Test Suite', () => {
     expect(bookRepository.getAll).toHaveReturnedWith([]);
   });
 
-  test("Book Service - deleteBookById", () => {
+  xtest("Book Service - deleteBookById", () => {
     bookService.getAllBooks();
 
     expect(bookRepository.getAll).toHaveBeenCalledWith();
