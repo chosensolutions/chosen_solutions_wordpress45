@@ -1,10 +1,12 @@
 const globalResponseDTO = require('../responses/globalResponseDTO');
 const registerUserRequestDTO = require('../requests/registerUserRequestDTO');
 const loginUserRequestDTO = require('../requests/loginUserRequestDTO');
+const userResponseDTO = require('../responses/userResponseDTO');
 
 const registerUserValidator = require('../validators/registerUserValidator');
+const loginUserValidator = require('../validators/loginUserValidator');
+
 const authService = require('../domain/services/auth.service');
-const userResponseDTO = require('../responses/userResponseDTO');
 
 const EventEmitter = require('events');
 const eventEmitter = new EventEmitter();
@@ -21,23 +23,23 @@ const catchExceptions = require('../utils/catchExceptions');
  * @returns globalResponseDTO
  */
 const registerUser = catchExceptions(async (req, res, next) => {
-  // 1. POST /api/v1/auth/register
+  // 1. POST /api/v1/auth/register /
 
-  // 2. middleware: none
+  // 2. middleware: none /
 
-  // 3. request
+  // 3. request /
   const registerUserRequest = registerUserRequestDTO(req.body);
 
-  // 4. validation
+  // 4. validation /
   const registerUserValidation = registerUserValidator(registerUserRequest);
 
-  // 5. business logic
+  // 5. business logic /
   let user = await authService.registerUser(registerUserRequest);
 
-  // 6. event
+  // 6. event /
   eventEmitter.emit('userHasRegistered', user);
 
-  // 7. response
+  // 7. response /
   return res.json(globalResponseDTO(
     status = "success",
     code = 200,
@@ -55,21 +57,21 @@ const registerUser = catchExceptions(async (req, res, next) => {
  * @param {*} next 
  */
 const logUserIn = catchExceptions(async (req, res, next) => {
-  // 1. POST /api/v1/auth/login
+  // 1. POST /api/v1/auth/login /
 
-  // 2. middleware: none
+  // 2. middleware: none /
 
-  // 3. request
+  // 3. request /
   const loginUserRequest = loginUserRequestDTO(req.body);
 
-  // 4. validation
-  //const loginUserValidation = loginUserValidator(loginUserRequest);
+  // 4. validation /
+  const loginUserValidation = loginUserValidator(loginUserRequest);
 
   // 5. business logic
   // if the user's email and password match in our database then set the current session to that user
   let loggedInUser = {};
   if (await authService.loginUser(loginUserRequest)) {
-    req.session.user = loginUserRequest;
+    req.session.user = loginUserRequest.email;
     loggedInUser = loginUserRequest
   }
   else {
@@ -106,13 +108,13 @@ const logUserIn = catchExceptions(async (req, res, next) => {
  * @param {*} next 
  */
 const logUserOut = catchExceptions((req, res, next) => {
-  // 1. GET /api/v1/auth/logout
+  // 1. route: GET /api/v1/auth/logout
 
   // 2. middleware: none
 
-  // 3. request
+  // 3. request: none
 
-  // 4. validation
+  // 4. validation: none
 
   // 5. business logic
   req.session.destroy();
@@ -137,29 +139,24 @@ const logUserOut = catchExceptions((req, res, next) => {
  * @param {*} next 
  */
 const getAuthUser = catchExceptions((req, res, next) => {
-  // 1. GET /api/v1/auth/user
+  // 1. route: GET /api/v1/auth/user
 
   // 2. middleware: none
 
-  // 3. request
+  // 3. request: none
 
-  // 4. validation
+  // 4. validation: none
 
   // 5. business logic
-  const user = null;
-  let message;
-  if (!req.session.user) {
-    // throw exception here
-  }
-  user = req.session.user;
+  let user = req.session.user;
 
-  // 6. event
+  // 6. event: none
 
   // 7. response
   return res.status(200).json(globalResponseDTO(
     status = 'success',
     code = 200,
-    message = `Here is the currently authenticated user's information.`,
+    message = `The currently authenticated user's information.`,
     data = userResponseDTO(user),
     errors = null
   ));

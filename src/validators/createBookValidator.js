@@ -27,7 +27,7 @@ const createBookValidator = (data) => {
       'failed',
       400,
       null,
-      validator.errors
+      validator.errors.errors
     );
   }
 
