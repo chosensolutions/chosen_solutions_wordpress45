@@ -13,25 +13,20 @@ const registerUser = async (user) => {
  */
 const loginUser = async (user) => {
   let loginUser = await userRepository.findUserByEmailAndPassword(user);
-
-  if (loginUser) {
-    return true;
-  }
-
-  return false;
+  return !!loginUser;
 }
 
 /**
  * @returns boolean
  */
-const logoutUser = async () => {
+const logoutUser = async (req) => {
   return;
 }
 
 /**
  * @returns User
  */
-const getCurrentUser = async () => {
+const getCurrentUser = async (req) => {
   return;
 }
 
