@@ -1,20 +1,37 @@
+const userFactory = require('../testUtils/factories/userFactory');
+const bookFactory = require('../testUtils/factories/bookFactory');
+
+const BookModel = require('../../src/domain/models/book.model');
+const UserModel = require('../../src/domain/models/user.model');
+
+const setUpDatabase = async () => {
+  await BookModel.deleteMany({});
+  await UserModel.deleteMany({});
+
+  await userFactory(5);
+}
+
+const clearDatabase = async () => {
+  await BookModel.deleteMany({});
+  await UserModel.deleteMany({});
+}
+
 /**
- * I see in the database one record - it contains
- * 
- * I see in the database a collection of records - it contains
+ * dbTestUtil.getAllTableData(require('./models/user.model'));
+ * will return:
+ * [
+ *  user {},
+ *  user {},
+ *  user {}
+ *  ...
+ * ]
  */
+const getAllTableData = async (Model) => {
+  return await Model.find({});
+}
 
- module.exports = {
-   clearTable: () => {},
-   buildDatabase: () => {},
-   clearDatabase: () => {},
-   getTable: (Model) => {}
- }
-
-// assert it exists in the database
-// assert that something does not exist in the db
-
-// db(model = book).clear()
-// db(model = book).generate(10)
-
-// what about relationships?
+module.exports = {
+  setUpDatabase,
+  clearDatabase,
+  getAllTableData
+}

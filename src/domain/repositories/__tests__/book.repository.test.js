@@ -1,26 +1,24 @@
 const config = require('../../../../config');
-const mongoose = require("mongoose");
-mongoose.connect(config.mongoURI, { useNewUrlParser: true });
-
+const db = require('../../../utils/db');
+let dbConnection;
+const dbTestUtils = require('../../../../tests/testUtils/dbTestUtil');
 const bookRepository = require('../book.repository');
 const BookModel = require('../../models/book.model');
-const userFactory = require('../../../../tests/testUtils/factories/userFactory');
-const bookFactory = require('../../../../tests/testUtils/factories/bookFactory');
 
-// look into this setup: https://jestjs.io/docs/en/configuration#setupfilesafterenv-array
 beforeAll(async () => {
-  //await BookModel.deleteMany({});
-
-  await userFactory(5);
-  //await bookFactory(5);
+  dbConnection = await db();
 });
 
 beforeEach(async () => {
-
+  await dbTestUtils.setUpDatabase();
 });
 
 afterEach(async () => {
-  //await BookModel.deleteMany({});
+  //await dbTestUtils.clearDatabase();
+});
+
+afterAll(async () => {
+  await dbConnection.disconnect();
 });
 
 describe('Test Suite: Book Repository', () => {
@@ -28,16 +26,16 @@ describe('Test Suite: Book Repository', () => {
   it('Book Repository - getAll', async () => {
     let books = await bookRepository.getAll();
 
-    //expect(books.length).toBe(5);
+    expect(books.length).toBe(15);
   });
 
-  xit('Book Repository - getById', async () => {
+  it('Book Repository - getById', async () => {
     let book = await bookRepository.getById('56e6dd2eb4494ed008d595bd');
 
     expect(book).toBe(null);
   });
 
-  xit('Book Repository - createBook', async () => {
+  it('Book Repository - createBook', async () => {
     let newBook = {
       title: 'Harry Potter and the Awesome Book of Nothing',
       description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
@@ -47,13 +45,9 @@ describe('Test Suite: Book Repository', () => {
     }
 
     let book = await bookRepository.create(newBook);
-
-    // need to implement this
-    // $this->assertDatabaseHas('users', [
-    //   'email' => 'sally@example.com',
-    // ])
-
-    //console.log(book);
+    let books = await dbTestUtils.getAllTableData(BookModel);
+    let mostRecentlyInsertedBook = books[books.length - 1];
+    expect(book.id).toBe(mostRecentlyInsertedBook.id);
   });
 
   xit('Book Repository - updateBookById', async () => {
@@ -70,12 +64,12 @@ describe('Test Suite: Book Repository', () => {
   });
 
   xit('Book Repository - deleteBookById', async () => {
-    let book = await bookRepository.deleteById('56e6dd2eb4494ed008d595bd');
+    let books = await dbTestUtils.getAllTableData(BookModel);
+    let bookToDelete = books[0];
+    let book = await bookRepository.deleteById(bookToDelete.id);
 
-    //console.log(book);
+    let updatedBooks = await dbTestUtils.getAllTableData(BookModel);
+    //expect(updatedBooks.find(book => { return book.id === bookToDelete.id})).toBe(null);
   });
 });
 
-afterAll(async () => {
-  await mongoose.connection.close();
-});
