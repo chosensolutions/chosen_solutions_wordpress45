@@ -1,4 +1,8 @@
-# api-node-starter-kit
+# Book Application
+
+The complementary book repository:
+https://github.com/yichenzhu1337/leanpub-book-restful-nodejs
+
 This is the starter kit for building any Node.js backend system. This starter kit is mainly for building RESTful web APIs.
 
 ## Requirements
