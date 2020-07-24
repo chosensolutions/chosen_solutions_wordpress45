@@ -76,8 +76,6 @@ const logUserIn = catchExceptions(async (req, res, next) => {
     ));
   }
 
-  console.log(userResponseDTO(loggedInUser))
-
   // 6. event
   // eventEmitter.emit('userHasLoggedIn', user);
 

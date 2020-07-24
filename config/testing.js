@@ -3,7 +3,7 @@ module.exports = {
   port: Math.round(Math.random() * 65535),
   apiPrefix: 'api',
   apiVersion: 'v1',
-  fullUrl: `${this.baseUrl}${port}/${apiPrefix}`,
+  baseUrl: `${this.baseUrl}${this.port}/${this.apiPrefix}/${this.apiVersion}`,
   mongoURI: 'mongodb://localhost:27017/test_db',
   sessionSecret: 'my-secret-session-testing'
 }

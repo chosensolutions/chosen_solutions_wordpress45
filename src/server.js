@@ -15,7 +15,7 @@ const mongoose = require('mongoose');
 
 app.use(
   session({
-    secret: 'secret',
+    secret: config.sessionSecret,
     resave: true,
     saveUninitialized: false,
     store: new MongoStore({ mongooseConnection: mongoose.connection, collection: 'sessions' })
