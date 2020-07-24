@@ -11,7 +11,7 @@ const UserModel = require('../models/user.model');
  * @returns user
  */
 const createUser = async (userData) => {
-  let user = new UserModel(userData)
+  let user = new UserModel(userData);
   let userReturn = await user.save(userData);
 
   return userReturn;

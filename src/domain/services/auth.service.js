@@ -9,11 +9,11 @@ const registerUser = async (user) => {
 }
 
 /**
- * @returns boolean
+ * @returns user
  */
 const loginUser = async (user) => {
   let loginUser = await userRepository.findUserByEmailAndPassword(user);
-  return !!loginUser;
+  return loginUser;
 }
 
 /**

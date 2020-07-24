@@ -59,33 +59,36 @@ const logUserIn = catchExceptions(async (req, res, next) => {
 
   // 5. business logic
   // if the user's email and password match in our database then set the current session to that user
-  let loggedInUser = {};
-  if (await authService.loginUser(loginUserRequest)) {
-    req.session.user = loginUserRequest.email;
-    loggedInUser = loginUserRequest
+  let loggedInUser = await authService.loginUser(loginUserRequest);
+  if (loggedInUser) {
+    req.session.user = loggedInUser;
   }
   else {
-    // if the user does not log in successfully
-    return res.json(globalResponseDTO(
+    // if the user does not login successfully
+    return res.status(400).json(globalResponseDTO(
       status = 'failed',
       code = 400,
       message = `Invalid credentials, please try a different email and password combination.`,
-      data = {},
+      data = null,
       errors = [
         `Invalid credentials, please try a different email and password combination.`
       ]
     ));
   }
 
+  console.log(userResponseDTO(loggedInUser))
+
   // 6. event
   // eventEmitter.emit('userHasLoggedIn', user);
 
   // 7. response
+  let userDTO = userResponseDTO(loggedInUser);
+  console.log(userDTO)
   return res.status(200).json(globalResponseDTO(
     status = 'success',
     code = 200,
     message = `The user has successfully logged in.`,
-    data = loggedInUser,
+    userDTO,
     errors = null
   ));
 });

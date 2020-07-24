@@ -84,7 +84,7 @@ const updateABook = catchException(async (req, res, next) => {
 });
 
 /**
- * Description:
+ * Deletes a book in the database by the specified book's id
  */
 const deleteABook = catchException(async (req, res, next) => {
   // 5. business logic
