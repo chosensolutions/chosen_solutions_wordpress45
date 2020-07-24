@@ -1,4 +1,4 @@
-# Book Application
+# RESTful Node.js: A Structure Approach - Book Application
 
 The complementary book repository:
 https://github.com/yichenzhu1337/leanpub-book-restful-nodejs
