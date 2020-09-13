@@ -14,7 +14,7 @@
     "express-session": "^1.17.1",
     "faker": "^4.1.0",
     "mongoose": "^5.9.10",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "validatorjs": "^3.18.1"
   },
   "devDependencies": {
