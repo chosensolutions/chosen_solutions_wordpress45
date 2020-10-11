@@ -1,3 +1,3 @@
-require('/app.controller');
-require('/auth.controller');
-require('/book.controller');
+require('/app.controller')
+require('/auth.controller')
+require('/book.controller')

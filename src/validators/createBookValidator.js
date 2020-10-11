@@ -1,5 +1,5 @@
-const Validator = require('validatorjs');
-const ApiException = require('../utils/ApiException');
+const Validator = require('validatorjs')
+const ApiException = require('../utils/ApiException')
 
 /**
  * @param {*} data {
@@ -7,7 +7,7 @@ const ApiException = require('../utils/ApiException');
  *  - password
  *  - password_confirm:
  * }
- * 
+ *
  * @returns Validator
  */
 const createBookValidator = (data) => {
@@ -17,9 +17,9 @@ const createBookValidator = (data) => {
     price: 'required|numeric|min:1',
     author: 'required',
     datePublished: 'required'
-  };
+  }
 
-  let validator = new Validator(data, rules);
+  let validator = new Validator(data, rules)
 
   if (validator.fails()) {
     throw new ApiException(
@@ -28,10 +28,10 @@ const createBookValidator = (data) => {
       400,
       null,
       validator.errors.errors
-    );
+    )
   }
 
-  return validator;
+  return validator
 }
 
-module.exports = createBookValidator;
+module.exports = createBookValidator

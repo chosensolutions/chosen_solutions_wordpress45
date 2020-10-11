@@ -1,29 +1,29 @@
-const Model = require('../models/book.model');
+const Model = require('../models/book.model')
 
 // Retrieve - all
 const getAll = async () => {
-  return await Model.find({});
+  return await Model.find({})
 }
 
 // Retrieve - one
 const getById = async (id) => {
-  return await Model.findById(id);
+  return await Model.findById(id)
 }
 
 // Create
 const create = async (newBook) => {
-  const book = new Model(newBook);
-  return await book.save();
+  const book = new Model(newBook)
+  return await book.save()
 }
 
 // Update
 const updateById = async (id, book) => {
-  return await Model.findByIdAndUpdate(id, book);
+  return await Model.findByIdAndUpdate(id, book)
 }
 
 // Delete
 const deleteById = async (id) => {
-  return await Model.deleteOne({ _id: id });
+  return await Model.deleteOne({ _id: id })
 }
 
 module.exports = {
@@ -32,4 +32,4 @@ module.exports = {
   create,
   updateById,
   deleteById
-};
+}

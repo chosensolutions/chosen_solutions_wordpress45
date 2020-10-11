@@ -20,7 +20,8 @@
   "devDependencies": {
     "cz-conventional-changelog": "^3.1.0",
     "jest": "^25.4.0",
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.2",
+    "prettier": "2.1.2"
   },
   "scripts": {
     "start": "node ./src/index.js",
@@ -28,7 +29,9 @@
     "test:mac": "NODE_ENV=testing jest --config=config/jest.config.js --runInBand",
     "test:windows": "set NODE_ENV=testing && jest --config=config/jest.config.js --runInBand",
     "test:watch": "NODE_ENV=testing jest --config=config/jest.config.js --watch",
-    "mongo:start": "docker run --rm -d -p 27017:27017 mongo"
+    "mongo:start": "docker run --rm -d -p 27017:27017 mongo",
+    "prettier:write": "npx prettier --write .",
+    "prettier:check": "npx prettier --check ."
   },
   "config": {
     "commitizen": {
