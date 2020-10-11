@@ -31,6 +31,14 @@ $ npm run dev
 It will start at http://localhost:5000
 
 ## Running Tests
+Make sure you have a local instance of MongoDB Running.
+
+Running Tests on Mac
 ```
-npm run test
+$ npm run test:mac
+```
+
+Running Tests on Windows
+```
+$ npm run test:windows
 ```
