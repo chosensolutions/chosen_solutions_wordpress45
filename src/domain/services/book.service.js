@@ -22,8 +22,6 @@ const getBookById = async (bookId) => {
 
   let book = await bookRepository.getById(bookId)
 
-  // console.log('book', book);
-
   if (!book) {
     throw new ApiException(
       (message = `the book with that id: ${bookId} does not exist.`),

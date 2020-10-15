@@ -8,7 +8,7 @@ const catchException = require('../utils/catchExceptions')
 /**
  * Description:
  */
-const getAllbooks = catchException(async (req, res, next) => {
+const getAllBooks = catchException(async (req, res, next) => {
   // 5. business logic
   const books = await bookService.getAllBooks()
 
@@ -116,7 +116,7 @@ const deleteABook = catchException(async (req, res, next) => {
 })
 
 module.exports = {
-  getAllbooks,
+  getAllBooks,
   getBookById,
   createABook,
   updateABook,
