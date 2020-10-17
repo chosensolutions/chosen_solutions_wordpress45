@@ -7,7 +7,6 @@ const baseURL = `http://localhost:${apiPort}/api/v1`
 const db = require('../../../src/utils/db')
 let dbConnection
 const dbTestUtils = require('../../../tests/testUtils/dbTestUtil')
-const ApiException = require('../../../src/utils/ApiException')
 
 beforeAll(async () => {
   await api.listen(apiPort)
@@ -31,12 +30,12 @@ afterAll(async () => {
  * 1. Arrange
  *  - setup the world
  * 2. Act
- *  - making the http call
+ *  - make the http call
  * 3. Assert
  *  - response check
  */
 describe('API Test - Register User', () => {
-  xit('POST /api/v1/auth/register - happy path', async () => {
+  it('POST /api/v1/auth/register - happy path', async () => {
     let user = {
       first_name: 'Yichen',
       last_name: 'Zhu',
