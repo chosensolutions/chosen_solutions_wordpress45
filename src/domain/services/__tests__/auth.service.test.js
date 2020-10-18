@@ -1,7 +1,7 @@
 const userRepository = require('../../repositories/user.repository')
 const authService = require('../auth.service')
 
-beforeAll(async () => { })
+beforeAll(async () => {})
 
 beforeEach(() => {
   userRepository.createUser = jest.fn((data) => {
@@ -9,9 +9,9 @@ beforeEach(() => {
   })
 })
 
-afterEach(async () => { })
+afterEach(async () => {})
 
-afterAll(async () => { })
+afterAll(async () => {})
 
 describe('Test Suite: Auth Service', () => {
   it('Auth Service - registerUser', async () => {

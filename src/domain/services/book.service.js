@@ -14,7 +14,7 @@ const getBookById = async (bookId) => {
     throw new ApiException(
       (message = `the book with that id: ${bookId} does not exist.`),
       (status = 'failed'),
-      (code = 401),
+      (code = 404),
       (data = null),
       (errors = [`the book with that id: ${bookId} does not exist.`])
     )
@@ -26,7 +26,7 @@ const getBookById = async (bookId) => {
     throw new ApiException(
       (message = `the book with that id: ${bookId} does not exist.`),
       (status = 'failed'),
-      (code = 401),
+      (code = 404),
       (data = null),
       (errors = [`the book with that id: ${bookId} does not exist.`])
     )
