@@ -19,9 +19,14 @@
   },
   "devDependencies": {
     "cz-conventional-changelog": "^3.1.0",
+    "eslint": "^7.12.1",
+    "eslint-config-node": "^4.1.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
     "jest": "^25.4.0",
     "nodemon": "^2.0.2",
-    "prettier": "2.1.2"
+    "prettier": "^2.1.2"
   },
   "scripts": {
     "start": "node ./src/index.js",
@@ -32,7 +37,9 @@
     "mongo:start": "docker run --rm -d -p 27017:27017 mongo",
     "db:seed": "node ./tests/testUtils/dbSeeds.js",
     "prettier:write": "npx prettier --write .",
-    "prettier:check": "npx prettier --check ."
+    "prettier:check": "npx prettier --check .",
+    "lint": "eslint ./src ./tests",
+    "lint:fix": "eslint ./src ./test --fix"
   },
   "config": {
     "commitizen": {
