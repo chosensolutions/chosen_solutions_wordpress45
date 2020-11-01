@@ -22,6 +22,7 @@
     "eslint": "^7.12.1",
     "eslint-config-node": "^4.1.0",
     "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-jest": "^24.1.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.1.4",
     "jest": "^25.4.0",
@@ -36,10 +37,10 @@
     "test:watch": "NODE_ENV=testing jest --config=config/jest.config.js --watch",
     "mongo:start": "docker run --rm -d -p 27017:27017 mongo",
     "db:seed": "node ./tests/testUtils/dbSeeds.js",
-    "prettier:write": "npx prettier --write .",
     "prettier:check": "npx prettier --check .",
-    "lint": "eslint ./src ./tests",
-    "lint:fix": "eslint ./src ./test --fix"
+    "prettier:write": "npx prettier --write .",
+    "lint:check": "eslint ./src ./tests",
+    "lint:fix": "eslint ./src ./tests --fix"
   },
   "config": {
     "commitizen": {

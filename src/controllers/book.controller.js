@@ -1,10 +1,10 @@
 const globalResponseDTO = require('../responses/globalResponseDTO')
 const createBookRequestDTO = require('../requests/createBookRequestDTO')
-const bookResponseDTO = require('../responses/bookResponseDTO')
+// const bookResponseDTO = require('../responses/bookResponseDTO')
 const catchException = require('../utils/catchExceptions')
 const bookService = require('../domain/services/book.service')
 
-const getAllBooks = catchException(async (req, res, next) => {
+const getAllBooks = catchException(async (req, res) => {
   // 5. business logic
   const books = await bookService.getAllBooks()
 
@@ -20,7 +20,7 @@ const getAllBooks = catchException(async (req, res, next) => {
   )
 })
 
-const getBookById = catchException(async (req, res, next) => {
+const getBookById = catchException(async (req, res) => {
   // 5. business logic
   let book = await bookService.getBookById(req.params.id)
 
@@ -36,7 +36,7 @@ const getBookById = catchException(async (req, res, next) => {
   )
 })
 
-const createABook = catchException(async (req, res, next) => {
+const createABook = catchException(async (req, res) => {
   // 3. request
   const createBookRequest = createBookRequestDTO({
     id: req.session.user.id,
@@ -44,7 +44,7 @@ const createABook = catchException(async (req, res, next) => {
   })
 
   // 4. validation
-  const createBookValidation = createBookRequestDTO(createBookRequest)
+  createBookRequestDTO(createBookRequest)
 
   // 5. business logic
   const book = await bookService.createBook(req.body)
@@ -61,7 +61,7 @@ const createABook = catchException(async (req, res, next) => {
   )
 })
 
-const updateABook = catchException(async (req, res, next) => {
+const updateABook = catchException(async (req, res) => {
   // 5. business logic
   const book = await bookService.updateBookById(req.params.id, req.body)
 
@@ -77,7 +77,7 @@ const updateABook = catchException(async (req, res, next) => {
   )
 })
 
-const deleteABook = catchException(async (req, res, next) => {
+const deleteABook = catchException(async (req, res) => {
   // 5. business logic
   const book = await bookService.deleteBookById(req.params.id)
 

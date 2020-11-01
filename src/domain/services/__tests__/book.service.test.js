@@ -5,7 +5,7 @@ beforeAll(async () => {})
 
 beforeEach(() => {
   bookRepository.getAll = jest.fn(() => [])
-  bookRepository.getById = jest.fn((id) => {})
+  bookRepository.getById = jest.fn(() => {})
 })
 
 afterEach(async () => {})

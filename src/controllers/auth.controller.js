@@ -16,7 +16,7 @@ const catchExceptions = require('../utils/catchExceptions')
 /**
  * Inserts the user into the database and fires off an email notification to that user's email if successful.
  */
-const registerUser = catchExceptions(async (req, res, next) => {
+const registerUser = catchExceptions(async (req, res) => {
   // 1. POST /api/v1/auth/register /
 
   // 2. middleware: none /
@@ -25,7 +25,7 @@ const registerUser = catchExceptions(async (req, res, next) => {
   const registerUserRequest = registerUserRequestDTO(req.body)
 
   // 4. validation /
-  const registerUserValidation = registerUserValidator(registerUserRequest)
+  registerUserValidator(registerUserRequest)
 
   // 5. business logic /
   let user = await authService.registerUser(registerUserRequest)
@@ -48,7 +48,7 @@ const registerUser = catchExceptions(async (req, res, next) => {
 /**
  * Logs the user in and set a session for it.
  */
-const logUserIn = catchExceptions(async (req, res, next) => {
+const logUserIn = catchExceptions(async (req, res) => {
   // 1. POST /api/v1/auth/login /
 
   // 2. middleware: none /
@@ -57,7 +57,7 @@ const logUserIn = catchExceptions(async (req, res, next) => {
   const loginUserRequest = loginUserRequestDTO(req.body)
 
   // 4. validation /
-  const loginUserValidation = loginUserValidator(loginUserRequest)
+  loginUserValidator(loginUserRequest)
 
   // 5. business logic
   // if the user's email and password match in our database then set the current session to that user
@@ -99,7 +99,7 @@ const logUserIn = catchExceptions(async (req, res, next) => {
 /**
  * Logs the currently authenticated user out of the current session.
  */
-const logUserOut = catchExceptions((req, res, next) => {
+const logUserOut = catchExceptions((req, res) => {
   // 5. business logic
   req.session.destroy()
 
@@ -118,7 +118,7 @@ const logUserOut = catchExceptions((req, res, next) => {
 /**
  * Gets the currently authenticated user in the current session.
  */
-const getAuthUser = catchExceptions((req, res, next) => {
+const getAuthUser = catchExceptions((req, res) => {
   // 5. business logic
   let user = req.session.user
 

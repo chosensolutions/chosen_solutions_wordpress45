@@ -7,12 +7,10 @@ mailer.sendEmailToUser.mockImplementation(() => sentEmailSuccessful)
 
 describe('userHasRegisteredEvent', () => {
   it("Email has (un)successfully been sent to the user's email address", () => {
-    let eventResult = event(
-      (user = {
-        firstName: 'John',
-        email: 'john@john.com'
-      })
-    )
+    let eventResult = event({
+      firstName: 'John',
+      email: 'john@john.com'
+    })
 
     mailer.sendEmailToUser.mockImplementation(() => true)
 

@@ -9,7 +9,7 @@ describe('Test Suite: Request', () => {
     // 2. Act
     // 3. Assert
     expect(() => {
-      let registerUserRequest = registerUserRequestDTO(apiInputRequest)
+      registerUserRequestDTO(apiInputRequest)
     }).toThrow(Error)
   })
 
@@ -26,7 +26,7 @@ describe('Test Suite: Request', () => {
     // 2. Act
     // 3. Assert
     expect(() => {
-      let registerUserRequest = registerUserRequestDTO(apiInputRequest)
+      registerUserRequestDTO(apiInputRequest)
     }).toThrow(Error)
   })
 
@@ -61,7 +61,7 @@ describe('Test Suite: Request', () => {
 
     // 2. + 3. Act and Assert
     expect(() => {
-      let registerUserRequest = registerUserRequestDTO(apiInputRequest)
+      registerUserRequestDTO(apiInputRequest)
     }).toThrow(ApiException)
   })
 })

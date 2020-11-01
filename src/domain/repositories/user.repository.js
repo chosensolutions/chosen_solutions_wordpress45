@@ -39,7 +39,7 @@ const findUserByEmailAndPassword = async (userData) => {
  * @returns user
  */
 const getUserById = async (id) => {
-  const foundUser = await User.findOne({ id })
+  const foundUser = await UserModel.findOne({ id })
   return foundUser
 }
 

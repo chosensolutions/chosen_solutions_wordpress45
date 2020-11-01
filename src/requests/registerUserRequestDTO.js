@@ -12,7 +12,7 @@ const fields = [
 /**
  * @param Object data
  */
-registerUserRequestDTO = (data) => {
+const registerUserRequestDTO = (data) => {
   const errors = []
   fields.forEach((field) => {
     if (!(field in data)) {

@@ -3,7 +3,6 @@ let dbConnection
 const dbTestUtils = require('../../../../tests/testUtils/dbTestUtil')
 
 const userRepository = require('../user.repository')
-const UserModel = require('../../models/user.model')
 
 beforeAll(async () => {
   dbConnection = await db()

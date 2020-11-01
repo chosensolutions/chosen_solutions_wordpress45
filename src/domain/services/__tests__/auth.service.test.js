@@ -4,7 +4,7 @@ const authService = require('../auth.service')
 beforeAll(async () => {})
 
 beforeEach(() => {
-  userRepository.createUser = jest.fn((data) => {
+  userRepository.createUser = jest.fn(() => {
     return {}
   })
 })
@@ -15,14 +15,14 @@ afterAll(async () => {})
 
 describe('Test Suite: Auth Service', () => {
   it('Auth Service - registerUser', async () => {
-    let testUser = {
+    const testUser = {
       first_name: 'john',
       last_name: 'doe',
       email: 'john@john.com',
       password: 'password',
       phone_number: '4168561988'
     }
-    const user = await authService.registerUser(testUser)
+    await authService.registerUser(testUser)
 
     expect(userRepository.createUser).toHaveBeenCalledWith(testUser)
     expect(userRepository.createUser).toHaveBeenCalledTimes(1)
