@@ -11,25 +11,25 @@ const getAllBooks = async () => {
 const getBookById = async (bookId) => {
   if (!mongoose.Types.ObjectId.isValid(bookId)) {
     // the id is invalid
-    throw new ApiException(
-      (message = `the book with that id: ${bookId} does not exist.`),
-      (status = 'failed'),
-      (code = 404),
-      (data = null),
-      (errors = [`the book with that id: ${bookId} does not exist.`])
-    )
+    throw new ApiException({
+      message: `the book with that id: ${bookId} does not exist.`,
+      status: 'failed',
+      code: 404,
+      data: null,
+      errors: [`the book with that id: ${bookId} does not exist.`]
+    })
   }
 
   let book = await bookRepository.getById(bookId)
 
   if (!book) {
-    throw new ApiException(
-      (message = `the book with that id: ${bookId} does not exist.`),
-      (status = 'failed'),
-      (code = 404),
-      (data = null),
-      (errors = [`the book with that id: ${bookId} does not exist.`])
-    )
+    throw new ApiException({
+      message: `the book with that id: ${bookId} does not exist.`,
+      status: 'failed',
+      code: 404,
+      data: null,
+      errors: [`the book with that id: ${bookId} does not exist.`]
+    })
   }
 
   return book

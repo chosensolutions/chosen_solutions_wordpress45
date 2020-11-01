@@ -6,7 +6,7 @@
  * @param {*} message String
  * @param {*} data Object
  */
-function globalResponseDTO(status, code, message, data, errors) {
+function globalResponseDTO({ status, code, message, data, errors }) {
   return {
     status,
     code,

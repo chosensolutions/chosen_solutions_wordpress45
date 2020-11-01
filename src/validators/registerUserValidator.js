@@ -20,13 +20,13 @@ const registerUserValidator = (data) => {
   let validator = new Validator(data, rules)
 
   if (validator.fails()) {
-    throw new ApiException(
-      'There were errors with the validation',
-      'failed',
-      400,
-      null,
-      validator.errors.errors
-    )
+    throw new ApiException({
+      message: 'There were errors with the validation',
+      status: 'failed',
+      code: 400,
+      data: null,
+      errors: validator.errors.errors
+    })
   }
 
   return validator

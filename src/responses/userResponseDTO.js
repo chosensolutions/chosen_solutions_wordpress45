@@ -1,4 +1,4 @@
-function userResponseDTO(user) {
+const userResponseDTO = (user) => {
   delete user['password']
   delete user['createdAt']
   delete user['__v']

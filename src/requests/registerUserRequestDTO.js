@@ -21,12 +21,12 @@ registerUserRequestDTO = (data) => {
   })
 
   if (errors.length > 0) {
-    throw new ApiException(
-      (status = 'failed'),
-      (code = 422),
-      (message = 'Health Check Failed'),
-      (data = errors)
-    )
+    throw new ApiException({
+      status: 'failed',
+      code: 422,
+      message: 'Health Check Failed',
+      data: errors
+    })
   }
 
   return data
