@@ -21,6 +21,12 @@ Make sure to setup the configuration properly in the config directory.
 $ npm run mongo:start
 ```
 
+## Seeding the Database
+
+```
+$ npm run db:seed
+```
+
 ## Install Dependencies
 
 ```
