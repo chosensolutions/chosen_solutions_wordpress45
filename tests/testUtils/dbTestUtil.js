@@ -1,5 +1,4 @@
 const userFactory = require('../testUtils/factories/userFactory')
-const bookFactory = require('../testUtils/factories/bookFactory')
 
 const BookModel = require('../../src/domain/models/book.model')
 const UserModel = require('../../src/domain/models/user.model')

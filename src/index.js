@@ -1,4 +1,5 @@
 const server = require('./server')
+// eslint-disable-next-line
 const PORT = process.env.PORT || 5000
 
 const db = require('./utils/db')

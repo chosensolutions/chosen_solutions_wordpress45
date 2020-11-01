@@ -1,3 +1,4 @@
+/* eslint-disable */
 const isAuthenticated = require('../auth.middleware')
 
 describe('Middleware - authPermission', () => {

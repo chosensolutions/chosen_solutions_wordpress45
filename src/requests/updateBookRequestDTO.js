@@ -1,3 +1,4 @@
+/* eslint-disable */
 const ApiException = require('../utils/ApiException')
 
 const fields = []

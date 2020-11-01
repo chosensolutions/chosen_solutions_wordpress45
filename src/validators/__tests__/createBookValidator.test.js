@@ -31,7 +31,7 @@ describe('Test Suite: createBookValidator.test.js', () => {
 
     // 2. Act + 3. Assert
     expect(() => {
-      let validator = createBookValidator(data)
+      createBookValidator(data)
     }).toThrow(ApiException)
   })
 })

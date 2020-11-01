@@ -49,7 +49,7 @@ app.use('/api/v1', router)
 //   next(createError(404));
 // });
 
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
   // log it out into the conosle
   console.log('===============================')
   console.log('Global Error Catcher:', err.name)

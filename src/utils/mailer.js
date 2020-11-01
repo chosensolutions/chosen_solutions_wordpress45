@@ -7,7 +7,7 @@
  *
  * @returns boolean
  */
-const sendEmailToUser = (toEmail, subject, bodyText) => {
+const sendEmailToUser = () => {
   return false
 }
 
