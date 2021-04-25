@@ -8,7 +8,12 @@ let dbConnection
 
 beforeAll(async () => {
   await api.listen(apiPort)
-  dbConnection = await db() // start the database
+  dbConnection = await db()
+})
+
+afterAll(async () => {
+  await api.close()
+  await dbConnection.disconnect()
 })
 
 describe('App - General API', () => {
@@ -27,7 +32,3 @@ describe('App - General API', () => {
   })
 })
 
-afterAll(async () => {
-  await api.close()
-  await dbConnection.disconnect()
-})

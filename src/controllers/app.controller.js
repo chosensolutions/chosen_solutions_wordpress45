@@ -5,7 +5,7 @@ const catchExceptions = require('../utils/catchExceptions')
  * A health check is just to see if the application is available and working
  */
 const getHealthCheck = catchExceptions(async (req, res) => {
-  return res.status(200).json(
+  res.status(200).json(
     globalResponseDTO({
       status: 'success',
       code: 200,

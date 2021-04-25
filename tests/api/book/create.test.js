@@ -9,7 +9,7 @@ beforeAll(async () => {
 })
 
 describe('Books API - Create', () => {
-  xtest('POST /api/v1/books', async () => {
+  test.skip('POST /api/v1/books', async () => {
     let response = await (
       await fetch(`${baseURL}/books`, {
         method: 'POST',

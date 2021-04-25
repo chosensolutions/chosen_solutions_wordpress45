@@ -25,32 +25,13 @@ app.use(
   })
 )
 
+// Define all the routes here
 const getRouter = require('./routes')
 const router = getRouter()
 app.use('/api/v1', router)
 
-/////////////////////////////////////////////////////////////////////////
-// 404 API Endpoint Not Found
-// router.get('*', (req, res, next) => {
-//   return res
-//     .status(404)
-//     .json(globalResponseDTO(
-//       status = "failed",
-//       code = 404,
-//       message = `Test message: your shit failed!`,
-//       data = {
-//         message: err.message,
-//         err: err.status
-//       },
-//     ));
-// });
-// // catch 404 and forward to error handler
-// app.use((req, res, next) => {
-//   next(createError(404));
-// });
-
+// Global error catcher
 app.use((err, req, res) => {
-  // log it out into the conosle
   console.log('===============================')
   console.log('Global Error Catcher:', err.name)
   console.log('===============================')
