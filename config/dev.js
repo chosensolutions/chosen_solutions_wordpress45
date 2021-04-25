@@ -4,6 +4,6 @@ module.exports = {
   apiPrefix: 'api',
   apiVersion: 'v1',
   baseUrl: `${this.baseUrl}${this.port}/${this.apiPrefix}/${this.apiVersion}`,
-  mongoURI: 'mongodb://localhost:27017/dev_db',
+  mongoURI: 'mongodb://localhost:27017/restfulnode_dev_db',
   sessionSecret: 'my-secret-session-dev'
 }

@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.com/restful-node/restful-nodejs-app.svg?branch=master)](https://travis-ci.com/restful-node/restful-nodejs-app)
 
-This is the application repository for the book ***[RESTful Node.js: A Structured Approach](https://restfulnode.com)***.
+This is the application repository for the book **_[RESTful Node.js: A Structured Approach](https://restfulnode.com)_**.
 
 ## Requirements
 
