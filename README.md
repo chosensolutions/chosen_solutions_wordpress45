@@ -1,9 +1,8 @@
 # RESTful Node.js: A Structure Approach (Book Application)
 
-The complementary book repository:
-https://github.com/yichenzhu1337/leanpub-book-restful-nodejs
+[![Build Status](https://travis-ci.com/restful-node/restful-nodejs-app.svg?branch=master)](https://travis-ci.com/restful-node/restful-nodejs-app)
 
-This is the starter kit for building any Node.js backend system. This starter kit is mainly for building RESTful web APIs.
+This is the application repository for the book ***[RESTful Node.js: A Structured Approach](https://restfulnode.com)***.
 
 ## Requirements
 
