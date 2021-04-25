@@ -27,7 +27,7 @@ afterAll(async () => {
 })
 
 describe('Books API - Create', () => {
-  test('POST /api/v1/books', async () => {
+  test.skip('POST /api/v1/books', async () => {
     const user = {
       email: 'johndoe@email.com',
       password: 'password456'
