@@ -33,6 +33,8 @@ describe('Books API - Create', () => {
       password: 'password456'
     }
 
+    await fetch(`${baseURL}/auth/logout`)
+
     const userResponse = await fetch(`${baseURL}/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

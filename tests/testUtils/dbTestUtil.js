@@ -16,7 +16,7 @@ const setUpDatabase = async () => {
     phone_number: '1234567890'
   })
 
-  const newUser = await user.save()
+  await user.save()
 
   await userFactory(5)
 }
